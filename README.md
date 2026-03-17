@@ -4,6 +4,6 @@ todo …
 
 Who is who?
 
-Frontend Team: 
-Backend Team: Thorben
+Frontend Team: Felix, Fabian 
 
+Backend Team: Thorben, Jan
