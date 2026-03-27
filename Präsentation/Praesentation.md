@@ -1,42 +1,83 @@
 ---
 marp: true
 theme: neobeam
-footer: '**Webanwendungen**
-         **Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad**
-         **Unsere Projektidee**'
+footer: '**Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad**
+         **Webanwendungen**
+         **`u.hu`**'
 paginate: true
 
 
 ---
+
+<style>
+.emoji, .emoji * { display: inline; white-space: nowrap; line-height: 1; }
+.no-break { white-space: nowrap; }
+</style>
+
+
 <!-- _class: title -->
 
-# Unsere Projektidee
+# `u.hu` 
 
-## Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad
+##  Ein Lexikon für Vögel und Forum für Vogelsichtung  
 
 > ### Webanwendungen
 > Hochschule Albstadt Sigmaringen
 
-## Projektidee
+## Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad
 
 ![logo hs albsi ](./logo.png)
 
 
 --- 
 
-<!-- header: 'HEADER EINS' -->
+<!-- header: '🐦 Unsere Projektidee' -->
 
-# Unsere Projektidee 
 
-```html
+# Was ist `u.hu`? 
 
-<body>
-    <div id="mainframe1">
-        Hello World 
-    </div>
-</body>
-```
+- Wissensplattform und Lexikon für Vögel
+- Aktive Community und Forum für Vogelsichtungen
 
 
 ---
 
+# 💪 Was uns motiviert... 
+
+Wir sind ein junges dynamisches Team, das sich für unsere heimischen Vogalarten begeistert. 
+
+Wir wollen eine Plattform erschaffen, die diese Begeisterung  ins Netzt trägt. Wir wollen ...
+
+- 💡 Wissen zugänglicher zu machen 
+- 🫂 Community für Vogelenthusiasten zu schaffen 
+
+
+---
+
+<!-- header: '🐦 Zieldefinition' -->
+
+Die Website bietet folgende Funktionen:
+
+- 🚀 Landing-Page mit Suchfunktion
+- 🔎 Ergebnisseite für Suchen
+- 🐦 Detail-Seiten für einzelne Vögel
+- 🔑 Login-Bereich für Nutzer
+- ⭐ Möglichkeit für Nutzer Favoriten zu speichern
+- 💬 Forum für Mitglieder zum Austausch
+
+---
+
+
+<!-- header: '🐦 Projektumfang' -->
+
+
+Das Projekt ist innerhalb von 3 Monaten, mit 4 motivierten Informatikern umsetzbar.
+
+--- 
+
+<!-- header: '🐦Organisationsplanung' -->
+
+
+# Gantt Diagramm
+
+Hier wird das Diagramm eingefügt
