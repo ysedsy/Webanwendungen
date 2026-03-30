@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: neobeam
+theme: neobeam 
 footer: '**Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad**
          **Webanwendungen**
          **`u.hu`**'
@@ -32,6 +32,8 @@ paginate: true
 --- 
 
 <!-- header: '🐦 Unsere Projektidee' -->
+
+
 
 
 # Was ist `u.hu`? 
@@ -72,6 +74,49 @@ Die Website bietet folgende Funktionen:
 
 
 Das Projekt ist innerhalb von 3 Monaten, mit 4 motivierten Informatikern umsetzbar.
+
+
+--- 
+
+<!-- header: 'Mock Ups' -->
+
+# Systematischer Aufbau von `u.hu`
+
+
+![](./Seitenaufbau.png)
+
+
+
+---
+
+
+# Entwurf - Landing Page
+
+Landing-Page von `u.hu` mit Suchleiste:
+
+![](../Mock%20Ups/Landing_Page_Erster_Entwurf.png)
+
+
+---
+
+
+# Entwurf - Browse Search Page
+
+Diese Seite listet Suchergebnisse auf:
+
+![](../Mock%20Ups/Browse_SearchPage.png)
+
+
+---
+
+
+# Entwurf - Detail Page
+
+Diese Seite zeigt Detailinformationen zu einzelnen Vögeln an:
+
+![](../Mock%20Ups/Detail_Page.png)
+
+
 
 --- 
 
