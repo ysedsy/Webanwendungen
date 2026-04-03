@@ -1,10 +1,11 @@
 ---
 marp: true
-theme: neobeam 
+theme: neobeam
 footer: '**Felix Gaartz, Jan Mihlan, Thorben Müller, Fabian Flad**
          **Webanwendungen**
          **`u.hu`**'
 paginate: true
+mermaid: true
 
 
 ---
@@ -58,32 +59,23 @@ Wir wollen eine Plattform erschaffen, die diese Begeisterung  ins Netzt trägt. 
 
 <!-- header: '🐦 Zieldefinition' -->
 
-Die Website bietet folgende Funktionen:
+Die Website bietet **folgende Funktionen**:
 
 - 🚀 Landing-Page mit Suchfunktion
 - 🔎 Ergebnisseite für Suchen
 - 🐦 Detail-Seiten für einzelne Vögel
-- 🔑 Login-Bereich für Nutzer
-- ⭐ Möglichkeit für Nutzer Favoriten zu speichern
 - 💬 Forum für Mitglieder zum Austausch
+- 📜 Impressum / AGBs / Kontakt
 
 ---
 
-
-<!-- header: '🐦 Projektumfang' -->
-
-
-Das Projekt ist innerhalb von 3 Monaten, mit 4 motivierten Informatikern umsetzbar.
-
-
---- 
 
 <!-- header: 'Mock Ups' -->
 
 # Systematischer Aufbau von `u.hu`
 
 
-![](./Seitenaufbau.png)
+![](Seitenaufbau-1.png)
 
 
 
@@ -117,12 +109,18 @@ Diese Seite zeigt Detailinformationen zu einzelnen Vögeln an:
 ![](../Mock%20Ups/Detail_Page.png)
 
 
+---
+# Entwurf - Forum Page
+
+![](../Mock%20Ups/Forum_Page.png)
+
 
 --- 
 
-<!-- header: '🐦Organisationsplanung' -->
+<!-- header: '🐦 Projektumfang und Organisationsplanung' -->
 
 
-# Gantt Diagramm
+# Zeitplan
 
-Hier wird das Diagramm eingefügt
+![width:1500](../Gantt/Gantt.jpeg)
+

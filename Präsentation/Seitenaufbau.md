@@ -1,5 +1,5 @@
 ```mermaid
-graph TD
+graph TD;
 A(Landing Page) -- search --> B(Browse Search Page)
 A -- impressum --> Z(Impressum / AGB / Kontakt)
 B -- choose --> C(Detail Page)
@@ -8,3 +8,5 @@ A --> F(Forum Page)
 F -- Beitrag verfassen --> G(Beitrag Verfassen)
 G -- post --> F
 ```
+
+ npx @mermaid-js/mermaid-cli -i Seitenaufbau.md -o Seitenaufbau.svg
