@@ -91,6 +91,14 @@ Landing-Page von `u.hu` mit Suchleiste:
 
 ---
 
+# Entwurf - Impressum / Kontakt / AGB Page
+
+
+![](../Mock%20Ups/Impressum_Page.png)
+
+---
+
+
 
 # Entwurf - Browse Search Page
 
@@ -112,7 +120,14 @@ Diese Seite zeigt Detailinformationen zu einzelnen Vögeln an:
 ---
 # Entwurf - Forum Page
 
-![](../Mock%20Ups/Forum_Page.png)
+![](../Mock%20Ups/Forum_Page%20.png) 
+
+
+---
+# Entwurf - Forum Eintrag verfassen Page
+
+![](../Mock%20Ups/Forum_Eintrag_Verfassen_Page.png) 
+
 
 
 --- 
