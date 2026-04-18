@@ -202,15 +202,16 @@ body {
 }
 
 .browse_frame :hover{
-    border-color: #6ba644;
+    border-color: var(--primary);
 }
 
 .bird_preview a{
-    color:#2b5f5e
+    color:#2b5f5e;
+    text-decoration: none;
 }
 
 .bird_preview h1 :hover{
-    color: #6ba644
+    color: var(--primary)
 }
 
 
