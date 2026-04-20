@@ -183,7 +183,7 @@ body {
 .bird_preview{
     width: 100%;
     height: 50vh;                     
-    border: 7px solid  #2b5f5e;
+    border: 0.25rem solid var(--secondary);
     border-radius: 15%;
     overflow: hidden;
     display: flex;
