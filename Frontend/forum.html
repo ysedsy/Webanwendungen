@@ -6,7 +6,117 @@
     <title>Bird Encyclopedia u.hu</title>
     <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png"/>
     <link rel="stylesheet" href="styles\styles.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --secondary_light: rgba(43, 94, 93, 0.75);
+        }
+
+        .forum-section {
+            width: 100%;
+            display: grid;
+            justify-items: center;
+            gap: 1rem;
+            padding: 5rem 1rem 2rem;
+        }
+
+        .post-form,
+        .form-actions {
+            width: 100%;
+            max-width: 35rem;
+        }
+
+        .post-form {
+            display: grid;
+            gap: 0;
+            padding: 2rem 2rem 0.8rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px var(--secondary_light);
+        }
+
+        .form-group {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 4rem 1fr;
+            column-gap: 1rem;
+            row-gap: 0.25rem;
+            align-items: start;
+        }
+
+        .textarea-group {
+            grid-template-columns: 1fr;
+        }
+
+        label {
+            white-space: nowrap;
+            padding-top: 0.15rem;
+        }
+
+        .input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.45rem;
+            border: 0.1rem solid var(--secondary);
+            border-radius: 0.25rem;
+            background: var(--surface);
+            color: var(--ink);
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow:
+                    inset 0 1px 2px rgba(0, 0, 0, 0.06),
+                    0 0 0 2px rgba(43, 94, 93, 0.12);
+        }
+
+        .input::placeholder {
+            color: color-mix(in srgb, var(--ink) 40%, white);
+        }
+
+        .input_2 {
+            resize: none;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+        }
+
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 9rem;
+            height: 2.5rem;
+            padding: 0 1.25rem;
+            border: 2px solid var(--primary);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition:
+                    background 0.2s ease,
+                    color 0.2s ease,
+                    transform 0.15s ease;
+        }
+
+        .submit-button:hover {
+            background: color-mix(in srgb, var(--primary) 90%, white);
+            color: white;
+        }
+
+        .submit-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+
 </head>
 <body>
 <div class="frame">
@@ -24,61 +134,37 @@
         <a class="nav-link" href="#forum">Forum</a>
     </header>
 
-    <div class="container d-flex flex-column align-items-center mt-5">
-        <div class="card shadow p-4" style="width: 100%; max-width: 700px;">
-            <table class="table-borderless w-100" style="border-spacing: 8px 12px; border-collapse: separate;">
-                <tr>
-                    <td style="white-space: nowrap;">
-                        Name:
-                    </td>
-                    <td>
-                        <input
-                                type="text"
-                                name="Name"
-                                placeholder="Name..."
-                                class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="white-space: nowrap;">
-                        Header:
-                    </td>
-                    <td>
-                        <input
-                                type="text"
-                                name="Header"
-                                placeholder="Header..."
-                                class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <textarea
-                                name="Post"
-                                placeholder="Create Post..."
-                                class="form-control"
-                                rows="5"
-                                style="resize: none;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td style="text-align: right;">
-                        <a class="hero-button" href="#browse">Publish Post</a>
-                    </td>
-                </tr>
-            </table>
-
+    <section class="forum-section" id="forum">
+        <form class="post-form" id="post-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="Name" placeholder="Name" class="input">
             </div>
-        </div>
 
-        <footer class="footer">
-            <nav class="footer-links">
-                <a href="#kontakt">Kontakt</a>
-                <a href="#privacy">Datenschutzerklärung</a>
-            </nav>
-        </footer>
-    </div>
+            <div class="form-group">
+                <label for="header">Header:</label>
+                <input id="header" type="text" name="Header" placeholder="Header" class="input">
+            </div>
+
+            <div class="form-group textarea-group">
+                <textarea id="post" name="Post" placeholder="Create post" class="input input_2" rows="5"></textarea>
+            </div>
+        </form>
+
+        <div class="form-actions">
+            <button class="submit-button" type="submit" form="post-form">
+                Publish Post
+            </button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="#kontakt">Kontakt</a>
+            <a href="#privacy">Datenschutzerklärung</a>
+        </nav>
+    </footer>
+</div>
 </body>
+
 </html>
