@@ -3,6 +3,7 @@
     --ink: #000000;
     --primary: #ff9800;
     --secondary: #2b5f5e;
+    --secondary_light: rgba(43, 94, 93, 0.75);
     --accent: #6ba644;
 }
 
@@ -23,9 +24,16 @@ body {
 }
 
 .frame {
-    min-height: 100vh;
+    height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+}
+
+.frame > main,
+.frame > section {
+    min-height: 0;
+    overflow-y: auto;
 }
 
 .topbar {
@@ -171,8 +179,8 @@ body {
 }
 
 
-.browse_frame{
-    display:grid;
+.browse_frame {
+    display: grid;
     justify-content: center;
     grid-template-columns: 22% 22% 22% 22%;
     grid-template-rows: auto;
@@ -180,9 +188,9 @@ body {
 }
 
 
-.bird_preview{
+.bird_preview {
     width: 100%;
-    height: 50vh;                     
+    height: 50vh;
     border: 0.25rem solid var(--secondary);
     border-radius: 15%;
     overflow: hidden;
@@ -192,26 +200,262 @@ body {
     margin: 2%
 }
 
-.bird_preview img {  
+.bird_preview img {
     width: 100%;
-    height: 50%;                     
-    object-fit: cover;                
+    height: 50%;
+    object-fit: cover;
     display: block;
     border-radius: 10%;
-    
+
 }
 
-.browse_frame :hover{
+.browse_frame :hover {
     border-color: var(--primary);
 }
 
-.bird_preview a{
-    color:#2b5f5e;
+.bird_preview a {
+    color: #2b5f5e;
     text-decoration: none;
 }
 
-.bird_preview h1 :hover{
+.bird_preview h1 :hover {
     color: var(--primary)
 }
 
 
+
+.legal-content {
+    max-width: 56.25rem;
+    margin: 1rem auto;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.legal-content h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--ink);
+}
+
+.legal-content h2,
+.legal-content h3 {
+    margin-top: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+}
+
+.legal-content p {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+}
+
+.bird-detail-page {
+    width: min(100%, 56.25rem);
+    margin: 1rem auto;
+    padding: 2rem;
+    display: grid;
+    gap: 1.25rem;
+    background: var(--surface);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.bird-detail-title {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--ink);
+}
+
+.bird-detail-image {
+    width: 100%;
+    max-height: 32rem;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.9rem;
+    border: 0.1rem solid var(--secondary);
+    box-shadow: 0 0.25rem 0.9rem rgba(0, 0, 0, 0.12);
+}
+
+.bird-detail-text {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.forum-section,
+.forum-page {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.forum-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+.forum-page {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.post-form,
+.form-actions {
+    width: 100%;
+    max-width: 35rem;
+}
+
+.post-form {
+    display: grid;
+    gap: 0;
+    padding: 2rem 2rem 0.8rem;
+    border-radius: 1rem;
+    box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.06),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    align-items: start;
+}
+
+.textarea-group {
+    grid-template-columns: 1fr;
+}
+
+label {
+    white-space: nowrap;
+    padding-top: 0.15rem;
+}
+
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem;
+    border: 0.1rem solid var(--secondary);
+    border-radius: 0.25rem;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.06),
+        0 0 0 2px rgba(43, 94, 93, 0.12);
+}
+
+.input::placeholder {
+    color: color-mix(in srgb, var(--ink) 40%, white);
+}
+
+.input_2 {
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+}
+
+.forum-actions {
+    width: 100%;
+    max-width: 48rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+.submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 9rem;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border: 2px solid var(--primary);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.submit-button:hover {
+    background: color-mix(in srgb, var(--primary) 90%, white);
+    color: white;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+.feed-window {
+    width: 100%;
+    max-width: 46rem;
+    height: calc(100vh - 18rem);
+    max-height: 40rem;
+    min-height: 24rem;
+    overflow-y: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--surface);
+    box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.06),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.forum-feed {
+    display: grid;
+    gap: 2rem;
+}
+
+.post-card {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.post-header,
+.post-body {
+    border: 0.1rem solid var(--secondary);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+}
+
+.post-body {
+    min-height: 14rem;
+    padding: 1rem;
+    line-height: 1.5;
+}

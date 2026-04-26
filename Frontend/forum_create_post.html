@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bird Encyclopedia u.hu</title>
+    <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png"/>
+    <link rel="stylesheet" href="styles\styles.css"/>
+
+</head>
+<body>
+<div class="frame">
+    <header class="topbar">
+        <div class="logo">
+            <picture>
+                <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo"/>
+            </picture>
+        </div>
+        <a class="nav-link" href="index.html">Home</a>
+        <div class="search-wrap">
+            <input type="text" class="search-bar" placeholder="Search birds..."/>
+        </div>
+        <a class="nav-link" href="browse.html">Browse</a>
+        <a class="nav-link" href="forum_feed.html">Forum</a>
+    </header>
+
+    <section class="forum-section" id="forum">
+        <form class="post-form" id="post-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="Name" placeholder="Name" class="input">
+            </div>
+
+            <div class="form-group">
+                <label for="header">Header:</label>
+                <input id="header" type="text" name="Header" placeholder="Header" class="input">
+            </div>
+
+            <div class="form-group textarea-group">
+                <textarea id="post" name="Post" placeholder="Create post" class="input input_2" rows="5"></textarea>
+            </div>
+        </form>
+
+        <div class="form-actions">
+            <button class="submit-button" type="submit" form="post-form">
+                Publish Post
+            </button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="impressum.html">Kontakt</a>
+            <a href="agb.html">AGBs</a>
+        </nav>
+    </footer>
+</div>
+</body>
+
+</html>
