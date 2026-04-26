@@ -197,7 +197,8 @@ body {
     display: flex;
     flex-direction: column;
     padding: 5%;
-    margin: 2%
+    margin: 2%;
+    box-shadow: 0 0.25rem 0.9rem rgba(0, 0, 0, 0.12); 
 }
 
 .bird_preview img {
@@ -206,7 +207,8 @@ body {
     object-fit: cover;
     display: block;
     border-radius: 10%;
-
+    border: 0.1rem solid var(--secondary);
+    box-shadow: 0 0.25rem 0.9rem rgba(0, 0, 0, 0.12);
 }
 
 .browse_frame :hover {
