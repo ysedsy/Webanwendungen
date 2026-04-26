@@ -7,80 +7,36 @@
     <title>Bird Encyclopedia u.hu</title>
     <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png" />
     <link rel="stylesheet" href="styles\styles.css" />
-    <style>
-        main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-        }
-
-        .bird_detail{
-            width: 80%;
-            /* height: 50vh;                      */
-            border: 0.25rem solid var(--secondary);
-            border-radius: 15%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            padding: 5%;
-            margin: 2%
-            
-        }
-        .bird_detail img{
-            display: flex;
-            max-height: 0.5rem;
-            max-height: 40rem;
-            object-fit: contain;
-            border-radius: 15%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        h1 {
-            text-align: center;
-        }
-        
-        
-    </style>
 </head>
 
 <body>
     <div class="frame">
         <header class="topbar">
-            <div class="logo">
+            <a class="logo" href="index.html" aria-label="Go to homepage">
                 <picture>
                     <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
-            </div>
-            <a class="nav-link" href="#home">Home</a>
+            </a>
+            <a class="nav-link" href="index.html">Home</a>
             <div class="search-wrap">
                 <input type="text" class="search-bar" placeholder="Search birds..." />
             </div>
-            <a class="nav-link" href="#browse">Browse</a>
-            <a class="nav-link" href="#forum">Forum</a>
+            <a class="nav-link" href="browse.html">Browse</a>
+            <a class="nav-link" href="forum_feed.html">Forum</a>
         </header>
 
-        <main id="home">
-            <h1> Stockente </h1>
-            <div class="bird_detail"> 
-                <div>
-                    <img src="/Images/birds/stockente.jpg">
-                </div>
-                
-                
-            </div>
-            <div class="bird_detail">
-                <p> Die Stockente (Anas platyrhynchos) ist eine Vogelart aus der Familie der Entenvögel (Anatidae).
-
-Die Stockente ist die größte und am häufigsten vorkommende Schwimmente Europas und die Stammform der Hausente. Ausgewachsene Männchen im Balzkleid sind mit ihrem grünmetallischen Kopf, dem gelben Schnabel und dem weißen Halsring unverwechselbar, die Weibchen sind unscheinbarer hellbraun mit orangefarbenem Schnabel.
-
-Stockenten kommen im größten Teil Eurasiens, im äußersten Norden Afrikas sowie in weiten Teilen Nordamerikas vor und sind in Neuseeland und Australien als Brutvogel eingeführt worden. Ihre Häufigkeit ist darauf zurückzuführen, dass sie sowohl bei der Wahl ihrer Brutplätze als auch ihrer Aufenthaltsorte wenig anspruchsvoll sind, sofern irgendeine Art von Gewässer vorhanden ist.</p>
-            </div>
+        <main class="bird-detail-page" id="home">
+            <h1 class="bird-detail-title">Stockente</h1>
+            <img class="bird-detail-image" src="../Images/birds/stockente.jpg" alt="Stockente im Wasser" />
+            <p class="bird-detail-text">
+                Die Stockente (Anas platyrhynchos) ist eine Vogelart aus der Familie der Entenvögel (Anatidae).
+            </p>
+            <p class="bird-detail-text">
+                Die Stockente ist die größte und am häufigsten vorkommende Schwimmente Europas und die Stammform der Hausente. Ausgewachsene Männchen im Balzkleid sind mit ihrem grünmetallischen Kopf, dem gelben Schnabel und dem weißen Halsring unverwechselbar, die Weibchen sind unscheinbarer hellbraun mit orangefarbenem Schnabel.
+            </p>
+            <p class="bird-detail-text">
+                Stockenten kommen im größten Teil Eurasiens, im äußersten Norden Afrikas sowie in weiten Teilen Nordamerikas vor und sind in Neuseeland und Australien als Brutvogel eingeführt worden. Ihre Häufigkeit ist darauf zurückzuführen, dass sie sowohl bei der Wahl ihrer Brutplätze als auch ihrer Aufenthaltsorte wenig anspruchsvoll sind, sofern irgendeine Art von Gewässer vorhanden ist.
+            </p>
             
 
             <!-- Hier kommt mein Inhalt hin -->
@@ -89,8 +45,8 @@ Stockenten kommen im größten Teil Eurasiens, im äußersten Norden Afrikas sow
 
         <footer class="footer">
             <nav class="footer-links">
-                <a href="#kontakt">Kontakt</a>
-                <a href="#privacy">Datenschutzerklärung</a>
+                <a href="impressum.html">Kontakt</a>
+                <a href="agb.html">AGBs</a>
             </nav>
         </footer>
     </div>
