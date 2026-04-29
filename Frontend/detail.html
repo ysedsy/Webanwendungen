@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bird Encyclopedia u.hu</title>
-    <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png" />
-    <link rel="stylesheet" href="styles\styles.css" />
+    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
@@ -14,12 +14,13 @@
         <header class="topbar">
             <a class="logo" href="index.html" aria-label="Go to homepage">
                 <picture>
-                    <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo" />
+                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
             </a>
             <a class="nav-link" href="index.html">Home</a>
             <div class="search-wrap">
-                <input type="text" class="search-bar" placeholder="Search birds..." />
+                <input type="text" class="search-bar" placeholder="Vögel suchen..." />
+                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
             <a class="nav-link" href="browse.html">Browse</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
@@ -27,7 +28,7 @@
 
         <main class="bird-detail-page" id="home">
             <h1 class="bird-detail-title">Stockente</h1>
-            <img class="bird-detail-image" src="../Images/birds/stockente.jpg" alt="Stockente im Wasser" />
+            <img class="bird-detail-image" src="images/birds/stockente.jpg" alt="Stockente im Wasser" />
             <p class="bird-detail-text">
                 Die Stockente (Anas platyrhynchos) ist eine Vogelart aus der Familie der Entenvögel (Anatidae).
             </p>
@@ -37,15 +38,27 @@
             <p class="bird-detail-text">
                 Stockenten kommen im größten Teil Eurasiens, im äußersten Norden Afrikas sowie in weiten Teilen Nordamerikas vor und sind in Neuseeland und Australien als Brutvogel eingeführt worden. Ihre Häufigkeit ist darauf zurückzuführen, dass sie sowohl bei der Wahl ihrer Brutplätze als auch ihrer Aufenthaltsorte wenig anspruchsvoll sind, sofern irgendeine Art von Gewässer vorhanden ist.
             </p>
-            
 
-            <!-- Hier kommt mein Inhalt hin -->
+            <table>
+                <tr>
+                    <td><strong>Name</strong></td>
+                    <td>Stockente (Anas platyrhynchos)</td>
+                </tr>
+                <tr>
+                    <td><strong>Größe</strong></td>
+                    <td>50–65 cm</td>
+                </tr>
+                <tr>
+                    <td><strong>Gewicht</strong></td>
+                    <td>0,7–1,6 kg</td>
+                </tr>
+            </table>
 
         </main>
 
         <footer class="footer">
             <nav class="footer-links">
-                <a href="impressum.html">Kontakt</a>
+                <a href="impressum.html">Impressum</a>
                 <a href="agb.html">AGBs</a>
             </nav>
         </footer>

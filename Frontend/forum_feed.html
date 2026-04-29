@@ -1,71 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="de">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bird Encyclopedia u.hu</title>
-    <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png" />
-    <link rel="stylesheet" href="styles\styles.css" />
+    <title>Forum Themen — u.hu</title>
+    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
     <div class="frame">
         <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Go to homepage">
+            <a class="logo" href="index.html" aria-label="Startseite">
                 <picture>
-                    <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo" />
+                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
             </a>
             <a class="nav-link" href="index.html">Home</a>
             <div class="search-wrap">
-                <input type="text" class="search-bar" placeholder="Search birds..." />
+                <input type="text" class="search-bar" placeholder="Vögel suchen..." />
+                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
             <a class="nav-link" href="browse.html">Browse</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
         </header>
 
-
         <main class="forum-page">
             <div class="forum-actions">
-                <a class="submit-button" href="forum_create_post.html">
-                    Create Post
-                </a>
+                <a class="submit-button" href="forum_create_post.html">Beitrag erstellen</a>
             </div>
 
-            <section class="feed-window" aria-label="Forum posts">
+            <section class="feed-window forum-topic-overview" aria-label="Forum topics">
                 <div class="forum-feed">
-                    <article class="post-card">
-                        <header class="post-header">
-                            <span>Name</span>
-                            <span>Date</span>
-                            <span>Header</span>
-                        </header>
+                    <h1>Themenübersicht</h1>
+                    <p>Wähle ein Thema, um die zugehörigen Beiträge zu sehen.</p>
 
-                        <div class="post-body">
-                            Beispieltext, der den Inhalt eines Forumbeitrags darstellt.
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <header class="post-header">
-                            <span>Name</span>
-                            <span>Date</span>
-                            <span>Header</span>
-                        </header>
-
-                        <div class="post-body">
-                            Beispieltext, der den Inhalt eines Forumbeitrags darstellt.
-                        </div>
-                    </article>
+                    <div class="topic-links">
+                        <a class="topic-link-card" href="feed_topic_allgemeine_diskussion.html">
+                            <span class="topic-link-title">Allgemeine Diskussion</span>
+                            <span class="topic-link-meta">Zum Feed</span>
+                        </a>
+                        <a class="topic-link-card" href="feed_topic_artbestimmung.html">
+                            <span class="topic-link-title">Artbestimmung</span>
+                            <span class="topic-link-meta">Zum Feed</span>
+                        </a>
+                        <a class="topic-link-card" href="feed_topic_beobachtungen.html">
+                            <span class="topic-link-title">Beobachtungen</span>
+                            <span class="topic-link-meta">Zum Feed</span>
+                        </a>
+                        <a class="topic-link-card" href="feed_topic_veranstaltungen_exkursionen.html">
+                            <span class="topic-link-title">Veranstaltungen & Exkursionen</span>
+                            <span class="topic-link-meta">Zum Feed</span>
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
 
-
         <footer class="footer">
             <nav class="footer-links">
-                <a href="impressum.html">Kontakt</a>
+                <a href="impressum.html">Impressum</a>
                 <a href="agb.html">AGBs</a>
             </nav>
         </footer>
