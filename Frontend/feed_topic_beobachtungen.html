@@ -12,30 +12,57 @@
 <body>
     <div class="frame">
         <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Go to homepage">
+            <a class="logo" href="index.html" aria-label="Zur Startseite">
                 <picture>
                     <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
             </a>
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.html">Startseite</a>
             <div class="search-wrap">
                 <input type="text" class="search-bar" placeholder="Vögel suchen..." />
                 <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
-            <a class="nav-link" href="browse.html">Browse</a>
+            <a class="nav-link" href="browse.html">Entdecken</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
         </header>
 
         <main class="forum-page">
             <div class="forum-actions">
-                <a class="submit-button" href="forum_create_post.html">Beitrag erstellen</a>
-                
+                <a class="submit-button" href="forum_create_post.html">Post im Thread verfassen</a>
             </div>
 
             <section class="feed-window" aria-label="Forum topic posts">
                 <div class="forum-feed">
-                    <h1>Beobachtungen</h1>
-                    <p>Noch keine Beispielbeiträge hinterlegt.</p>
+                    <div class="forum-feed-header">
+                        <h1>Beobachtungen</h1>
+                        <p>Hier laufen Sichtungen als fortlaufende Posts von oben nach unten. Antworten werden als neuer Beitrag im Thread ergänzt.</p>
+                    </div>
+
+                    <article class="thread-card">
+                        <header class="thread-card-header">
+                            <span class="thread-topic">Thread</span>
+                            <span class="thread-meta">2026-04-18 bis 2026-04-19</span>
+                        </header>
+                        <h2 class="thread-title">Reiher am Flussufer</h2>
+
+                        <div class="thread-posts">
+                            <article class="thread-post">
+                                <header class="post-header">
+                                    <span>Leonie</span>
+                                    <span>2026-04-18</span>
+                                </header>
+                                <div class="post-body">Heute früh stand ein grauer Reiher direkt am Ufer. Er blieb mehrere Minuten fast unbeweglich.</div>
+                            </article>
+
+                            <article class="thread-post">
+                                <header class="post-header">
+                                    <span>Mika</span>
+                                    <span>2026-04-19</span>
+                                </header>
+                                <div class="post-body">Gestern war dort ebenfalls einer. Vermutlich derselbe Vogel oder ein zweiter im selben Abschnitt.</div>
+                            </article>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>

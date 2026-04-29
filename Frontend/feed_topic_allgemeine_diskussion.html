@@ -12,54 +12,65 @@
 <body>
     <div class="frame">
         <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Go to homepage">
+            <a class="logo" href="index.html" aria-label="Zur Startseite">
                 <picture>
                     <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
             </a>
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.html">Startseite</a>
             <div class="search-wrap">
                 <input type="text" class="search-bar" placeholder="Vögel suchen..." />
                 <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
-            <a class="nav-link" href="browse.html">Browse</a>
+            <a class="nav-link" href="browse.html">Entdecken</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
         </header>
 
         <main class="forum-page">
             <div class="forum-actions">
-                <a class="submit-button" href="forum_create_post.html">Beitrag erstellen</a>
-                
+                <a class="submit-button" href="forum_create_post.html">Post im Thread verfassen</a>
             </div>
 
             <section class="feed-window" aria-label="Forum topic posts">
                 <div class="forum-feed">
-                    <h1>Allgemeine Diskussion</h1>
-                    <article class="post-card">
-                        <header class="post-header">
-                            <span>Anna</span>
-                            <span>2026-04-25</span>
-                            <span>Frühlingsbeobachtungen</span>
-                        </header>
+                    <div class="forum-feed-header">
+                        <h1>Allgemeine Diskussion</h1>
+                        <p>Posts stehen in zeitlicher Reihenfolge untereinander. Neue Antworten erscheinen einfach als nächster Beitrag im Thread.</p>
+                    </div>
 
-                        <div class="post-body">
-                            Hat jemand dieses Jahr schon einen Kuckuck gesehen? Ich dachte, ich hätte einen Ruf gehört, war mir aber unsicher.
-                            <div class="replies">
-                                <div class="reply">
-                                    <div class="post-header small">
-                                        <span>Bernd</span>
-                                        <span>2026-04-26</span>
-                                    </div>
-                                    <div class="post-body">Ich habe letzte Woche in meinem Garten einen gehört. War deutlich zu hören.</div>
+                    <article class="thread-card">
+                        <header class="thread-card-header">
+                            <span class="thread-topic">Thread</span>
+                            <span class="thread-meta">2026-04-25 bis 2026-04-27</span>
+                        </header>
+                        <h2 class="thread-title">Frühlingsbeobachtungen</h2>
+
+                        <div class="thread-posts">
+                            <article class="thread-post">
+                                <header class="post-header">
+                                    <span>Anna</span>
+                                    <span>2026-04-25</span>
+                                </header>
+                                <div class="post-body">
+                                    Hat jemand dieses Jahr schon einen Kuckuck gesehen? Ich dachte, ich hätte einen Ruf gehört, war mir aber unsicher.
                                 </div>
-                                <div class="reply">
-                                    <div class="post-header small">
-                                        <span>Clara</span>
-                                        <span>2026-04-26</span>
-                                    </div>
-                                    <div class="post-body">Danke für die Info. Wo ungefähr war das?</div>
-                                </div>
-                            </div>
+                            </article>
+
+                            <article class="thread-post">
+                                <header class="post-header">
+                                    <span>Bernd</span>
+                                    <span>2026-04-26</span>
+                                </header>
+                                <div class="post-body">Ich habe letzte Woche in meinem Garten einen gehört. War deutlich zu hören.</div>
+                            </article>
+
+                            <article class="thread-post">
+                                <header class="post-header">
+                                    <span>Clara</span>
+                                    <span>2026-04-27</span>
+                                </header>
+                                <div class="post-body">Danke für die Info. Wo ungefähr war das?</div>
+                            </article>
                         </div>
                     </article>
                 </div>
