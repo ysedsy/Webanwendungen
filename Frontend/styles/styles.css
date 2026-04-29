@@ -257,7 +257,7 @@ body {
 }
 
 .bird_preview a {
-    color: #2b5f5e;
+    color: vaer(--secondary);
     text-decoration: none;
 }
 
@@ -268,9 +268,9 @@ body {
 
 
 .legal-content {
-    max-width: 56.25rem;
-    margin: 1rem auto;
-    padding: 2rem;
+    max-width: 100%;
+    margin: 0rem;
+    padding: 1rem;
     background: var(--surface);
     border-radius: 0.75rem;
     box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
