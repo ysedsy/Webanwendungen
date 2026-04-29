@@ -35,7 +35,7 @@
                 <div class="forum-feed">
                     <div class="forum-feed-header">
                         <h1>Artbestimmung</h1>
-                        <p>Ein Thread, mehrere Posts, klare Reihenfolge: erst die Beobachtung, dann die Rückmeldungen darunter.</p>
+                        <p>Ein Thread kann Unterantworten enthalten, die wiederum eigene Unterantworten bekommen.</p>
                     </div>
 
                     <article class="thread-card">
@@ -45,8 +45,8 @@
                         </header>
                         <h2 class="thread-title">Welcher Vogel ist das?</h2>
 
-                        <div class="thread-posts">
-                            <article class="thread-post">
+                        <div class="reply-tree" aria-label="Antwortbaum">
+                            <article class="reply-item">
                                 <header class="post-header">
                                     <span>Daniel</span>
                                     <span>2026-03-10</span>
@@ -54,14 +54,27 @@
                                 <div class="post-body">
                                     Ich habe einen großen braunen Vogel am Rand eines Teichs gesehen, ist das eine Rohrdommel?
                                 </div>
-                            </article>
-
-                            <article class="thread-post">
-                                <header class="post-header">
-                                    <span>Eva</span>
-                                    <span>2026-03-11</span>
-                                </header>
-                                <div class="post-body">Sieht eher nach einer Rohrweihe aus. Größe und Schnabelform passen nicht zur Dommel.</div>
+                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                <div class="reply-children">
+                                    <article class="reply-item">
+                                        <header class="post-header">
+                                            <span>Eva</span>
+                                            <span>2026-03-11</span>
+                                        </header>
+                                        <div class="post-body">Sieht eher nach einer Rohrweihe aus. Größe und Schnabelform passen nicht zur Dommel.</div>
+                                        <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                        <div class="reply-children">
+                                            <article class="reply-item">
+                                                <header class="post-header">
+                                                    <span>Daniel</span>
+                                                    <span>2026-03-11</span>
+                                                </header>
+                                                <div class="post-body">Danke, dann schaue ich morgen nochmal mit Fernglas nach.</div>
+                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                            </article>
+                                        </div>
+                                    </article>
+                                </div>
                             </article>
                         </div>
                     </article>

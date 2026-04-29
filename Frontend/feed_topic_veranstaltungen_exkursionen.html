@@ -35,7 +35,7 @@
                 <div class="forum-feed">
                     <div class="forum-feed-header">
                         <h1>Veranstaltungen & Exkursionen</h1>
-                        <p>Termine, Berichte und Rückfragen erscheinen in einer fortlaufenden Reihenfolge statt als verschachtelte Antwortstruktur.</p>
+                        <p>Antworten können weitere Antworten enthalten. Auch hier läuft der Thread als Baum von oben nach unten.</p>
                     </div>
 
                     <article class="thread-card">
@@ -45,29 +45,42 @@
                         </header>
                         <h2 class="thread-title">Exkursion am Samstag</h2>
 
-                        <div class="thread-posts">
-                            <article class="thread-post">
+                        <div class="reply-tree" aria-label="Antwortbaum">
+                            <article class="reply-item">
                                 <header class="post-header">
                                     <span>Jana</span>
                                     <span>2026-04-12</span>
                                 </header>
                                 <div class="post-body">Wer hat Lust auf eine kleine Exkursion ins Feuchtgebiet? Treffpunkt wäre am Samstag um 8 Uhr.</div>
-                            </article>
-
-                            <article class="thread-post">
-                                <header class="post-header">
-                                    <span>Oskar</span>
-                                    <span>2026-04-13</span>
-                                </header>
-                                <div class="post-body">Ich bin dabei. Soll ich das Fernglas und das Spektiv mitbringen?</div>
-                            </article>
-
-                            <article class="thread-post">
-                                <header class="post-header">
-                                    <span>Jana</span>
-                                    <span>2026-04-15</span>
-                                </header>
-                                <div class="post-body">Ja, gern. Dann halten wir den Ablauf im selben Thread mit weiteren Posts aktuell.</div>
+                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                <div class="reply-children">
+                                    <article class="reply-item">
+                                        <header class="post-header">
+                                            <span>Oskar</span>
+                                            <span>2026-04-13</span>
+                                        </header>
+                                        <div class="post-body">Ich bin dabei. Soll ich das Fernglas und das Spektiv mitbringen?</div>
+                                        <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                        <div class="reply-children">
+                                            <article class="reply-item">
+                                                <header class="post-header">
+                                                    <span>Jana</span>
+                                                    <span>2026-04-15</span>
+                                                </header>
+                                                <div class="post-body">Ja, gern. Dann halten wir den Ablauf im selben Baum mit weiteren Antworten aktuell.</div>
+                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                            </article>
+                                            <article class="reply-item">
+                                                <header class="post-header">
+                                                    <span>Mila</span>
+                                                    <span>2026-04-15</span>
+                                                </header>
+                                                <div class="post-body">Ich komme auch mit. Ich antworte dann später direkt unter dieser Zusage.</div>
+                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                            </article>
+                                        </div>
+                                    </article>
+                                </div>
                             </article>
                         </div>
                     </article>

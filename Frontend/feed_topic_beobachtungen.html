@@ -35,7 +35,7 @@
                 <div class="forum-feed">
                     <div class="forum-feed-header">
                         <h1>Beobachtungen</h1>
-                        <p>Hier laufen Sichtungen als fortlaufende Posts von oben nach unten. Antworten werden als neuer Beitrag im Thread ergänzt.</p>
+                        <p>Antworten können weitere Antworten enthalten. Die Struktur läuft als Baum von oben nach unten.</p>
                     </div>
 
                     <article class="thread-card">
@@ -45,21 +45,34 @@
                         </header>
                         <h2 class="thread-title">Reiher am Flussufer</h2>
 
-                        <div class="thread-posts">
-                            <article class="thread-post">
+                        <div class="reply-tree" aria-label="Antwortbaum">
+                            <article class="reply-item">
                                 <header class="post-header">
                                     <span>Leonie</span>
                                     <span>2026-04-18</span>
                                 </header>
                                 <div class="post-body">Heute früh stand ein grauer Reiher direkt am Ufer. Er blieb mehrere Minuten fast unbeweglich.</div>
-                            </article>
-
-                            <article class="thread-post">
-                                <header class="post-header">
-                                    <span>Mika</span>
-                                    <span>2026-04-19</span>
-                                </header>
-                                <div class="post-body">Gestern war dort ebenfalls einer. Vermutlich derselbe Vogel oder ein zweiter im selben Abschnitt.</div>
+                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                <div class="reply-children">
+                                    <article class="reply-item">
+                                        <header class="post-header">
+                                            <span>Mika</span>
+                                            <span>2026-04-19</span>
+                                        </header>
+                                        <div class="post-body">Gestern war dort ebenfalls einer. Vermutlich derselbe Vogel oder ein zweiter im selben Abschnitt.</div>
+                                        <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                        <div class="reply-children">
+                                            <article class="reply-item">
+                                                <header class="post-header">
+                                                    <span>Sara</span>
+                                                    <span>2026-04-19</span>
+                                                </header>
+                                                <div class="post-body">An der Stelle habe ich ihn auch gesehen. Unter dem Baum links vom Steg.</div>
+                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
+                                            </article>
+                                        </div>
+                                    </article>
+                                </div>
                             </article>
                         </div>
                     </article>
