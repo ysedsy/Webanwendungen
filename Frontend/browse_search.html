@@ -19,27 +19,46 @@
             </a>
             <a class="nav-link" href="index.html">Home</a>
             <div class="search-wrap">
-                <input type="text" class="search-bar" placeholder="Vögel suchen..." />
+                <input type="text" class="search-bar" placeholder="Vögel suchen..." value="Kohl" />
                 <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
             <a class="nav-link" href="browse.html">Browse</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
         </header>
 
-        <main class="hero" id="home">
-            <div class="hero-background">
-                <picture>
-                    <img src="images/landing_background3.jpg" />
-                </picture>
-                <section class="hero-card" aria-label="Landing page preview">
-                    <h1 class="hero-title"><span style="color: var(--secondary);"> Bird Encyclopedia u<span
-                                style="color: var(--primary);">.</span><span
-                                style="color: var(--accent );">hu</span></span></h1>
-                    <a class="hero-button" href="browse.html">Browse</a>
-                </section>
+        <main class="browse_frame">
+            <div class="bird_preview" id="">
+                <img src="images/birds/kohlmeise.jpg" alt="Kohlmeise">
+                <h1><a href="detail.html">Kohlmeise</a></h1>
+                <table>
+                    <tr>
+                        <td>Größe</td>
+                        <td>xx. cm</td>
+                    </tr>
+                    <tr>
+                        <td>Gewicht</td>
+                        <td>xx. cm</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bird_preview" id="">
+                <img src="images/birds/Kohlrabe.jpg" alt="Kohlrabe">
+                <h1><a href="detail.html">Kohlrabe</a></h1>
+                <table>
+                    <tr>
+                        <td>Größe</td>
+                        <td>xx. cm</td>
+                    </tr>
+                    <tr>
+                        <td>Gewicht</td>
+                        <td>xx. cm</td>
+                    </tr>
+                </table>
             </div>
         </main>
 
+        <div id="bird-count" class="bird-count">2 Vögel insgesamt</div>
         <footer class="footer">
             <nav class="footer-links">
                 <a href="impressum.html">Impressum</a>
@@ -47,6 +66,7 @@
             </nav>
         </footer>
     </div>
+    
 </body>
 
 </html>

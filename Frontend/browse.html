@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bird Encyclopedia u.hu</title>
-    <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png" />
-    <link rel="stylesheet" href="styles\styles.css" />
+    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
@@ -14,21 +14,22 @@
         <header class="topbar">
             <a class="logo" href="index.html" aria-label="Go to homepage">
                 <picture>
-                    <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo" />
+                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
             </a>
             <a class="nav-link" href="index.html">Home</a>
             <div class="search-wrap">
-                <input type="text" class="search-bar" placeholder="Search birds..." />
+                <input type="text" class="search-bar" placeholder="Vögel suchen..." />
+                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
             <a class="nav-link" href="browse.html">Browse</a>
-            <a class="nav-link" href="forum_feed.html">Forum</a>
+            <a class="nav-link" href="forum_feed.html">Forum</a>e
         </header>
 
         <main class="browse_frame">
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/amsel.jpg">
+                <img src="images/birds/amsel.jpg">
                 <h1><a href="detail.html">Amsel</a></h1>
                 <table>
                     <tr>
@@ -43,7 +44,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/kohlmeise.jpg">
+                <img src="images/birds/kohlmeise.jpg">
                 <h1><a href="detail.html">Kohlmeise</a></h1>
                 <table>
                     <tr>
@@ -58,7 +59,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/Kohlrabe.jpg">
+                <img src="images/birds/Kohlrabe.jpg">
                 <h1><a href="detail.html">Kohlrabe</a></h1>
                 <table>
                     <tr>
@@ -73,7 +74,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/specht.jpg">
+                <img src="images/birds/specht.jpg">
                 <h1><a href="detail.html">Specht</a></h1>
                 <table>
                     <tr>
@@ -88,7 +89,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/uhu.jpg">
+                <img src="images/birds/uhu.jpg">
                 <h1><a href="detail.html">Uhu</a></h1>
                 <table>
                     <tr>
@@ -103,7 +104,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/stockente.jpg">
+                <img src="images/birds/stockente.jpg">
                 <h1><a href="detail.html">Stockente</a></h1>
                 <table>
                     <tr>
@@ -118,7 +119,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/Rotmilan.jpg">
+                <img src="images/birds/Rotmilan.jpg">
                 <h1><a href="detail.html">Rotmilan</a></h1>
                 <table>
                     <tr>
@@ -133,7 +134,7 @@
             </div>
 
             <div class="bird_preview" id="">
-                <img src="../Images/birds/graureiher.jpg">
+                <img src="images/birds/graureiher.jpg">
                 <h1><a href="detail.html">Graureiher</a></h1>
                 <table>
                     <tr>
@@ -150,13 +151,15 @@
 
         </main>
 
+        <div id="bird-count" class="bird-count">8 Vögel insgesamt</div>
         <footer class="footer">
             <nav class="footer-links">
-                <a href="impressum.html">Kontakt</a>
+                <a href="impressum.html">Impressum</a>
                 <a href="agb.html">AGBs</a>
             </nav>
         </footer>
     </div>
+    
 </body>
 
 </html>

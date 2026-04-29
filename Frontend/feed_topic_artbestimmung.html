@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artbestimmung — u.hu</title>
+    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+    <div class="frame">
+        <header class="topbar">
+            <a class="logo" href="index.html" aria-label="Go to homepage">
+                <picture>
+                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
+                </picture>
+            </a>
+            <a class="nav-link" href="index.html">Home</a>
+            <div class="search-wrap">
+                <input type="text" class="search-bar" placeholder="Vögel suchen..." />
+                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
+            </div>
+            <a class="nav-link" href="browse.html">Browse</a>
+            <a class="nav-link" href="forum_feed.html">Forum</a>
+        </header>
+
+        <main class="forum-page">
+            <div class="forum-actions">
+                <a class="submit-button" href="forum_create_post.html">Beitrag erstellen</a>
+                
+            </div>
+
+            <section class="feed-window" aria-label="Forum topic posts">
+                <div class="forum-feed">
+                    <h1>Artbestimmung</h1>
+                    <article class="post-card">
+                        <header class="post-header">
+                            <span>Daniel</span>
+                            <span>2026-03-10</span>
+                            <span>Welcher Vogel ist das?</span>
+                        </header>
+
+                        <div class="post-body">
+                            Ich habe einen großen braunen Vogel am Rand eines Teichs gesehen, ist das eine Rohrdommel?
+                            <div class="replies">
+                                <div class="reply">
+                                    <div class="post-header small">
+                                        <span>Eva</span>
+                                        <span>2026-03-11</span>
+                                    </div>
+                                    <div class="post-body">Sieht eher nach einer Rohrweihe aus. Größe und Schnabelform passen nicht zur Dommel.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <nav class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="agb.html">AGBs</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+
+</html>

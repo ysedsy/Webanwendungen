@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bird Encyclopedia u.hu</title>
-    <link rel="icon" type="image/x-icon" href="..\Logos\u_hu_logo_clean_transparent.png"/>
-    <link rel="stylesheet" href="styles\styles.css"/>
+    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png"/>
+    <link rel="stylesheet" href="styles/styles.css"/>
 
 </head>
 <body>
@@ -13,12 +13,13 @@
     <header class="topbar">
         <div class="logo">
             <picture>
-                <img src="..\Logos\u_hu_logo_clean_transparent.png" alt="Logo"/>
+                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo"/>
             </picture>
         </div>
         <a class="nav-link" href="index.html">Home</a>
         <div class="search-wrap">
-            <input type="text" class="search-bar" placeholder="Search birds..."/>
+            <input type="text" class="search-bar" placeholder="Vögel suchen..."/>
+            <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
         </div>
         <a class="nav-link" href="browse.html">Browse</a>
         <a class="nav-link" href="forum_feed.html">Forum</a>
@@ -43,14 +44,14 @@
 
         <div class="form-actions">
             <button class="submit-button" type="submit" form="post-form">
-                Publish Post
+                Beitrag veröffentlichen
             </button>
         </div>
     </section>
 
     <footer class="footer">
         <nav class="footer-links">
-            <a href="impressum.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
             <a href="agb.html">AGBs</a>
         </nav>
     </footer>
