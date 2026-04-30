@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vogel-Enzyklopädie u.hu</title>
+    <title>Bird Encyclopedia u.hu</title>
     <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
     <link rel="stylesheet" href="styles/styles.css" />
 </head>
@@ -12,7 +12,7 @@
 <body>
     <div class="frame">
         <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Zur Startseite">
+            <a class="logo" href="index.html" aria-label="Go to homepage">
                 <picture>
                     <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
                 </picture>
@@ -21,9 +21,8 @@
             <div class="search-wrap">
                 <div class="search-input-wrap">
                     <input type="text" class="search-bar" placeholder="Vögel suchen..." />
-                    <button class="search-clear" type="button" aria-label="Suchfeld leeren">✕</button>
+                    <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
                 </div>
-                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
             </div>
             <a class="nav-link" href="browse.html">Entdecken</a>
             <a class="nav-link" href="forum_feed.html">Forum</a>
