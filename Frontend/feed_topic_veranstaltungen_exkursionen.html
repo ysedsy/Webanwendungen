@@ -1,103 +1,161 @@
 <!doctype html>
 <html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Veranstaltungen & Exkursionen — u.hu</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="./logos/u_hu_logo_clean_transparent.png"
+        />
+        <link rel="stylesheet" href="styles/styles.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Veranstaltungen & Exkursionen — u.hu</title>
-    <link rel="icon" type="image/x-icon" href="./logos/u_hu_logo_clean_transparent.png" />
-    <link rel="stylesheet" href="styles/styles.css" />
-</head>
-
-<body>
-    <div class="frame">
-        <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Zur Startseite">
-                <picture>
-                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
-                </picture>
-            </a>
-            <a class="nav-link" href="index.html">Startseite</a>
-            <div class="search-wrap">
-                <div class="search-input-wrap">
-                    <input type="text" class="search-bar" placeholder="Vögel suchen..." />
-                    <button class="search-clear" type="button" aria-label="Suchfeld leeren">✕</button>
-                </div>
-                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
-            </div>
-            <a class="nav-link" href="browse.html">Entdecken</a>
-            <a class="nav-link" href="forum_feed.html">Forum</a>
-        </header>
-
-        <main class="forum-page">
-            <div class="forum-actions">
-                <a class="submit-button" href="forum_create_post.html">Post im Thread verfassen</a>
-            </div>
-
-            <section class="feed-window" aria-label="Forum topic posts">
-                <div class="forum-feed">
-                    <div class="forum-feed-header">
-                        <h1>Veranstaltungen & Exkursionen</h1>
-                        <p>Antworten können weitere Antworten enthalten. Auch hier läuft der Thread als Baum von oben nach unten.</p>
+    <body>
+        <div class="frame">
+            <header class="topbar">
+                <a class="logo" href="index.html" aria-label="Zur Startseite">
+                    <picture>
+                        <img
+                            src="./logos/u_hu_logo_clean_transparent.png"
+                            alt="Logo"
+                        />
+                    </picture>
+                </a>
+                <a class="nav-link" href="index.html">Startseite</a>
+                <div class="search-wrap">
+                    <div class="search-input-wrap">
+                        <input
+                            type="text"
+                            class="search-bar"
+                            placeholder="Vögel suchen..."
+                        />
+                        <button
+                            class="search-clear"
+                            type="button"
+                            aria-label="Suchfeld leeren"
+                        >
+                            ✕
+                        </button>
                     </div>
-
-                    <article class="thread-card">
-                        <header class="thread-card-header">
-                            <span class="thread-topic">Thread</span>
-                            <span class="thread-meta">2026-04-12 bis 2026-04-15</span>
-                        </header>
-                        <h2 class="thread-title">Exkursion am Samstag</h2>
-
-                        <div class="reply-tree" aria-label="Antwortbaum">
-                            <article class="reply-item">
-                                <header class="post-header">
-                                    <span>Jana</span>
-                                    <span>2026-04-12</span>
-                                </header>
-                                <div class="post-body">Wer hat Lust auf eine kleine Exkursion ins Feuchtgebiet? Treffpunkt wäre am Samstag um 8 Uhr.</div>
-                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
-                                <div class="reply-children">
-                                    <article class="reply-item">
-                                        <header class="post-header">
-                                            <span>Oskar</span>
-                                            <span>2026-04-13</span>
-                                        </header>
-                                        <div class="post-body">Ich bin dabei. Soll ich das Fernglas und das Spektiv mitbringen?</div>
-                                        <a class="reply-button" href="forum_create_post.html">Antworten</a>
-                                        <div class="reply-children">
-                                            <article class="reply-item">
-                                                <header class="post-header">
-                                                    <span>Jana</span>
-                                                    <span>2026-04-15</span>
-                                                </header>
-                                                <div class="post-body">Ja, gern. Dann halten wir den Ablauf im selben Baum mit weiteren Antworten aktuell.</div>
-                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
-                                            </article>
-                                            <article class="reply-item">
-                                                <header class="post-header">
-                                                    <span>Mila</span>
-                                                    <span>2026-04-15</span>
-                                                </header>
-                                                <div class="post-body">Ich komme auch mit. Ich antworte dann später direkt unter dieser Zusage.</div>
-                                                <a class="reply-button" href="forum_create_post.html">Antworten</a>
-                                            </article>
-                                        </div>
-                                    </article>
-                                </div>
-                            </article>
-                        </div>
-                    </article>
+                    <button
+                        class="search-button"
+                        onclick="window.location.href = 'browse_search.html'"
+                    >
+                        Suchen
+                    </button>
                 </div>
-            </section>
-        </main>
+                <a class="nav-link" href="browse.html">Entdecken</a>
+                <a class="nav-link" href="forum_feed.html">Forum</a>
+            </header>
 
-        <footer class="footer">
-            <nav class="footer-links">
-                <a href="impressum.html">Impressum</a>
-                <a href="agb.html">AGBs</a>
-            </nav>
-        </footer>
-    </div>
-</body>
+            <main class="forum-page">
+                <section class="feed-window" aria-label="Forum topic posts">
+                    <div class="forum-feed">
+                        <div class="forum-feed-header">
+                            <h1>Veranstaltungen & Exkursionen</h1>
+                            <div class="forum-actions">
+                                <a
+                                    class="submit-button"
+                                    href="forum_create_post.html"
+                                    >Post im Thread verfassen</a
+                                >
+                            </div>
+                        </div>
 
+                        <article class="thread-card">
+                            <header class="thread-card-header">
+                                <span class="thread-topic">Thread</span>
+                                <span class="thread-meta"
+                                    >2026-04-12 bis 2026-04-15</span
+                                >
+                            </header>
+                            <h2 class="thread-title">Exkursion am Samstag</h2>
+
+                            <div class="reply-tree" aria-label="Antwortbaum">
+                                <article class="reply-item">
+                                    <header class="post-header">
+                                        <span>Jana</span>
+                                        <span>2026-04-12</span>
+                                    </header>
+                                    <div class="post-body">
+                                        Wer hat Lust auf eine kleine Exkursion
+                                        ins Feuchtgebiet? Treffpunkt wäre am
+                                        Samstag um 8 Uhr.
+                                    </div>
+                                    <a
+                                        class="reply-button"
+                                        href="forum_create_post.html"
+                                        >Antworten</a
+                                    >
+                                    <div class="reply-children">
+                                        <article class="reply-item">
+                                            <header class="post-header">
+                                                <span>Oskar</span>
+                                                <span>2026-04-13</span>
+                                            </header>
+                                            <div class="post-body">
+                                                Ich bin dabei. Soll ich das
+                                                Fernglas und das Spektiv
+                                                mitbringen?
+                                            </div>
+                                            <a
+                                                class="reply-button"
+                                                href="forum_create_post.html"
+                                                >Antworten</a
+                                            >
+                                            <div class="reply-children">
+                                                <article class="reply-item">
+                                                    <header class="post-header">
+                                                        <span>Jana</span>
+                                                        <span>2026-04-15</span>
+                                                    </header>
+                                                    <div class="post-body">
+                                                        Ja, gern. Dann halten
+                                                        wir den Ablauf im selben
+                                                        Baum mit weiteren
+                                                        Antworten aktuell.
+                                                    </div>
+                                                    <a
+                                                        class="reply-button"
+                                                        href="forum_create_post.html"
+                                                        >Antworten</a
+                                                    >
+                                                </article>
+                                                <article class="reply-item">
+                                                    <header class="post-header">
+                                                        <span>Mila</span>
+                                                        <span>2026-04-15</span>
+                                                    </header>
+                                                    <div class="post-body">
+                                                        Ich komme auch mit. Ich
+                                                        antworte dann später
+                                                        direkt unter dieser
+                                                        Zusage.
+                                                    </div>
+                                                    <a
+                                                        class="reply-button"
+                                                        href="forum_create_post.html"
+                                                        >Antworten</a
+                                                    >
+                                                </article>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </article>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <nav class="footer-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="agb.html">AGBs</a>
+                </nav>
+            </footer>
+        </div>
+    </body>
 </html>
