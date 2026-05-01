@@ -140,3 +140,5 @@ vite.config.ts.timestamp-*
 
 .idea
 .vscode/settings.json
+postman/globals/workspace.globals.yaml
+.postman/resources.yaml
