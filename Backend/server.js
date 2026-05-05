@@ -1,10 +1,17 @@
 const express = require("express");
 const Database = require("better-sqlite3");
+const path = require ("path");
 
 const app = express();
 const port = 3000;
 
-const db = new Database("C:\\Users\\thorb\\OneDrive\\Dokumente\\02_Hochschule\\04_Module\\4_Semester\\07_Web Anwendungen 2\\02_Praktikum\\birdlexicon.db");
+app.use(express.static(path.join(__dirname, "public")))
+
+const db = new Database(path.join(__dirname, "birdlexicon.db"));
+
+app.get("/", (req,res) => {
+    res.send("Bird Lexicon API is running");
+});
 
 app.get("/birds", (req, res) => {
     const birds = db.prepare(
