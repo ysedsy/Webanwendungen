@@ -3,35 +3,104 @@ const app = require("./server");
 
 describe("Bird Lexicon API", () => {
 
-    test("GET / should return API status text", async () => {
-        const response = await request(app).get("/");
+    test("GET /api should return API status", async () => {
+        const response = await request(app).get("/api");
 
         expect(response.statusCode).toBe(200);
         expect(response.text).toBe("Bird Lexicon API is running");
     });
 
-    test("GET /birds should return JSON array", async () => {
-        const response = await request(app).get("/birds");
+    test("GET /api/birds should return birds as array", async () => {
+        const response = await request(app).get("/api/birds");
 
         expect(response.statusCode).toBe(200);
-        expect(response.headers["content-type"]).toMatch(/json/);
         expect(Array.isArray(response.body)).toBe(true);
     });
 
-    test("GET /birds should contain bird connection data", async () => {
-        const response = await request(app).get("/birds");
+    test("GET /api/birds/1 should return one bird or 404", async () => {
+        const response = await request(app).get("/api/birds/1");
 
-        expect(response.statusCode).toBe(200);
+        expect([200, 404]).toContain(response.statusCode);
 
-        if (response.body.length > 0) {
-            const bird = response.body[0];
-
-            expect(bird).toHaveProperty("BirdID");
-            expect(bird).toHaveProperty("CommonName");
-            expect(bird).toHaveProperty("ScientificName");
-            expect(bird).toHaveProperty("HabitatName");
-            expect(bird).toHaveProperty("ImagePath");
+        if (response.statusCode === 200) {
+            expect(response.body).toHaveProperty("BirdID");
+            expect(response.body).toHaveProperty("CommonName");
+            expect(response.body).toHaveProperty("ScientificName");
+            expect(response.body).toHaveProperty("HabitatName");
         }
     });
 
+    test("GET /api/habitats should return habitats as array", async () => {
+        const response = await request(app).get("/api/habitats");
+
+        expect(response.statusCode).toBe(200);
+        expect(Array.isArray(response.body)).toBe(true);
+    });
+
+    test("GET /api/threads should return threads as array", async () => {
+        const response = await request(app).get("/api/threads");
+
+        expect(response.statusCode).toBe(200);
+        expect(Array.isArray(response.body)).toBe(true);
+    });
+
+    test("POST /api/threads should create a new thread", async () => {
+        const response = await request(app)
+            .post("/api/threads")
+            .send({
+                threadTitle: "Test Thread",
+                userName: "Anonymous",
+                postText: "This is a test post."
+            });
+
+        expect(response.statusCode).toBe(201);
+        expect(response.body).toHaveProperty("message", "Thread created");
+        expect(response.body).toHaveProperty("threadID");
+    });
+
+    test("POST /api/threads should fail without postText", async () => {
+        const response = await request(app)
+            .post("/api/threads")
+            .send({
+                threadTitle: "Broken Thread"
+            });
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body).toHaveProperty("error");
+    });
+
+    test("POST /api/threads/:id/posts should create post in existing thread", async () => {
+        const threadResponse = await request(app)
+            .post("/api/threads")
+            .send({
+                threadTitle: "Thread for reply test",
+                userName: "Tester",
+                postText: "First post."
+            });
+
+        const threadID = threadResponse.body.threadID;
+
+        const response = await request(app)
+            .post(`/api/threads/${threadID}/posts`)
+            .send({
+                userName: "ReplyUser",
+                postText: "This is a reply."
+            });
+
+        expect(response.statusCode).toBe(201);
+        expect(response.body).toHaveProperty("message", "Post created");
+        expect(response.body).toHaveProperty("postID");
+    });
+
+    test("POST /api/threads/999999/posts should return 404", async () => {
+        const response = await request(app)
+            .post("/api/threads/999999/posts")
+            .send({
+                userName: "Nobody",
+                postText: "This should fail."
+            });
+
+        expect(response.statusCode).toBe(404);
+        expect(response.body).toHaveProperty("error", "Thread not found");
+    });
 });

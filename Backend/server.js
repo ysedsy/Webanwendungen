@@ -22,8 +22,8 @@ app.get("/api/birds", (req, res) => {
             Bird.ScientificName,
             Bird.Height,
             Bird.Weight,
-            Bird.Age,
-            Bird.Description
+            Bird.AverageAge,
+            Bird.Description,
             Habitat.HabitatID,
             Habitat.HabitatName,
             BirdImage.ImagePath
@@ -45,7 +45,7 @@ app.get("/api/birds/:id", (req, res)=>{
         Bird.ScientificName,
         Bird.Height,
         Bird.Weight,
-        Bird.Age,
+        Bird.AverageAge,
         Bird.Description,
         Habitat.HabitatID,
         Habitat.HabitatName,
@@ -56,7 +56,7 @@ app.get("/api/birds/:id", (req, res)=>{
         ON Bird.BirdID = BirdImage.BirdID
         AND BirdImage.IsMainImage = 1
     WHERE Bird.BirdID = ?
-    `)
+    `).get(req.params.id);
 
     if(!bird){
         return res.status(404).json({ error: "Bird not found" });
@@ -69,7 +69,7 @@ app.get("/api/habitats", (req,res) => {
     const habitats = db.prepare(`
     SELECT
         HabitatID,
-        HabitatName,
+        HabitatName
     FROM Habitat
     `).all();
 
@@ -158,11 +158,11 @@ app.post("/api/threads/:id/posts", (req, res) => {
     const { userName, postText, parentID } = req.body;
 
     if(!postText){
-        return res.staus(400).json({ error: "postText is required" });
+        return res.status(400).json({ error: "postText is required" });
     }
 
     const thread = db.prepare(`
-        SELECT ThreadID, FROM ForumThread WHERE ThreadID = ?
+        SELECT ThreadID FROM ForumThread WHERE ThreadID = ?
     `).get(req.params.id);
 
     if (!thread) {
@@ -181,7 +181,7 @@ app.post("/api/threads/:id/posts", (req, res) => {
 
     res.status(201).json({
         message: "Post created",
-        postID: result,lastInsertRowId
+        postID: result.lastInsertRowid
     });
 });
 
