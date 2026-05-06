@@ -11,23 +11,7 @@
 
 <body>
     <div class="frame">
-        <header class="topbar">
-            <a class="logo" href="index.html" aria-label="Startseite">
-                <picture>
-                    <img src="./logos/u_hu_logo_clean_transparent.png" alt="Logo" />
-                </picture>
-            </a>
-            <a class="nav-link" href="index.html">Startseite</a>
-            <div class="search-wrap">
-                <div class="search-input-wrap">
-                    <input type="text" class="search-bar" placeholder="Vögel suchen..." />
-                    <button class="search-clear" type="button" aria-label="Suchfeld leeren">✕</button>
-                </div>
-                <button class="search-button" onclick="window.location.href='browse_search.html'">Suchen</button>
-            </div>
-            <a class="nav-link" href="browse.html">Stöbern</a>
-            <a class="nav-link" href="forum_feed.html">Forum</a>
-        </header>
+        <div data-include="partials/header.html"></div>
 
         <main class="forum-page">
             <h1>Themenübersicht</h1>
@@ -41,13 +25,11 @@
 
         </main>
 
-        <footer class="footer">
-            <nav class="footer-links">
-                <a href="impressum.html">Impressum</a>
-                <a href="agb.html">AGBs</a>
-            </nav>
-        </footer>
+        <div data-include="partials/footer.html"></div>
     </div>
+    <script src="scripts/layout-includes.js" defer></script>
 </body>
 
 </html>
+
+
