@@ -30,6 +30,10 @@ app.get("/birds", (req, res) => {
     res.json(birds);
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-})
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
+}
+
+module.exports = app;
