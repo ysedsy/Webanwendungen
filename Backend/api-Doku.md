@@ -123,7 +123,8 @@ Liefert ein `.json`-Container mit allen Posts, die unter einem Thread abgesetzt 
         {
             "PostID":13,
             "UserName":"ReplyUser",
-            "PostText":"This is a reply.","DateCreated":"2026-05-06 12:54:03",
+            "PostText":"This is a reply.",
+            "DateCreated":"2026-05-06 12:54:03",
             "ThreadID":9,
             "ParentID":null
         }

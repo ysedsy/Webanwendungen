@@ -34,6 +34,7 @@ function buildThreadContainer(data){
     const ThreadID = data.ThreadID;
     const ThreadTitle = data.ThreadTitle;
 
+    
 
     let htmlSnippet = `
     <article class="thread-card">
@@ -42,7 +43,7 @@ function buildThreadContainer(data){
         </header>
         <h2 class="thread-title">
             <a
-                href="/thread.html?id=${ThreadID}"
+                href="/thread_dynamic.html?id=${ThreadID}"
                 >${ThreadTitle}</a
             >
         </h2>
