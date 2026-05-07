@@ -46,7 +46,7 @@ Gibt **einen** `.json`-Containern zurück, der Daten zu **diesem** Vogel aus der
 
 ## `GET /api/birds/search/:keyword`
 
-Gibt eine Liste mit `.json`-Containern zurück, die Daten zu **bestimmten** Vögeln aus der Datenbank enthalten, die mit dem keyword matchen:
+Gibt eine Liste mit `.json`-Containern zurück, die Daten zu **bestimmten** Vögeln aus der Datenbank enthalten, **die mit dem keyword matchen**:
 
 ```json
 [

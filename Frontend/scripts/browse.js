@@ -12,7 +12,7 @@ async function addResultBoxes(keyword){
 
     // Fehlerprüfung - Hat der FETCH GET funktioniert?
     if (result.status != 200) {
-        console.log("ERROR")
+        console.error(`Der gewünschte Vogel ${keyword} konnte nicht gefunden werden!`)
         let ErrorMessage = `<div><b>Unter dem Suchwort "${keyword}" konnten leider keine Vögel gefunden werden</b></div>`
         browseFrame.innerHTML = ErrorMessage;
         birdCountElement.textContent = "0 Vögel insgesamt gefunden";
@@ -54,7 +54,7 @@ function makeResultBox(data){
     let htmlSnippte = `
         <div class="bird_preview" id="${birdID}">
             <img src="${birdImage}">
-            <h1><a href="/detail.html${birdID}$">${birdCommonName}</a></h1>
+            <h1><a href="detailDynamic.html?id=${birdID}">${birdCommonName}</a></h1>
             <table>
                 <tr>
                     <td>Größe</td>
@@ -70,4 +70,6 @@ function makeResultBox(data){
     return htmlSnippte;
 }
 
-addResultBoxes("robin")
+const params = new URLSearchParams(window.location.search);
+const keyword = params.get('keyword'); 
+addResultBoxes(keyword)
