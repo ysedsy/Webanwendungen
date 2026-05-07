@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forum Themen — u.hu</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="./logos/u_hu_logo_clean_transparent.png"
+        />
+        <link rel="stylesheet" href="styles/styles.css" />
+    </head>
+
+    <body>
+        <div class="frame">
+            <div data-include="partials/header.html"></div>
+
+            <main>
+                <section
+                    class="forum-topic-overview"
+                    aria-label="Forum threads"
+                >
+                    <div class="forum-feed">
+                        <div class="forum-feed-header">
+                            <h1>Forum</h1>
+                            <div class="forum-actions">
+                                <a
+                                    class="submit-button"
+                                    href="forum_create_thread.html"
+                                    >Neuen Thread erstellen</a
+                                >
+                            </div>
+                        </div>
+
+                        <section
+                            class="thread-list"
+                            id="thread-list"
+                            aria-label="Aktuelle Threads"
+                        >
+                        </section>
+                    </div>
+                </section>
+            </main>
+
+            <div data-include="partials/footer.html"></div>
+        </div>
+    <script src="scripts/headerInit.js" defer></script>
+    <script src="scripts/layout-includes.js" defer></script>
+    <script src="scripts/feed.js"></script>
+</body>
+</html>
+
+

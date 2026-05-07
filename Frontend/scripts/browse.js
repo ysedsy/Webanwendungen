@@ -36,7 +36,7 @@ async function addResultBoxes(keyword){
     }
     // Ergebnis in die Container einfügen
     browseFrame.innerHTML = resultsHTML;
-    birdCountElement.textContent = `${listLength} Vögel insgesamt gefunden`;
+    birdCountElement.textContent = `Unter dem Suchwort "${keyword}" wurde/n ${listLength} Vögel gefunden`;
 
 }
 
