@@ -36,5 +36,5 @@ function headerInit(){
     return
 }
 
-headerInit();
-console.log("Working")
+
+
