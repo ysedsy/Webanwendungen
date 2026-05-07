@@ -1,20 +1,28 @@
 
 
-async function addResultBoxes(){
+async function addResultBoxes(keyword){
     // Container Element im DOM, in dem die Ergebnisse eingefügt werden
     const browseFrame = document.querySelector(".browse_frame");
+    const birdCountElement = document.getElementById("bird-count");
 
-    const result = await fetch("/api/birds", {"method": "GET"});
+    // Auswahl der richtigen API
+    const api = keyword == "" ? "/api/birds" : `/api/birds/search/${keyword}`
+
+    const result = await fetch(api, {"method": "GET"});
 
     // Fehlerprüfung - Hat der FETCH GET funktioniert?
     if (result.status != 200) {
-        let ErrorMessage = "<b>FEHLER<br>Es konnten leider keine Vögel gefunden werden</b>"
+        console.log("ERROR")
+        let ErrorMessage = `<div><b>Unter dem Suchwort "${keyword}" konnten leider keine Vögel gefunden werden</b></div>`
         browseFrame.innerHTML = ErrorMessage;
+        birdCountElement.textContent = "0 Vögel insgesamt gefunden";
+        return
     }
-    
+
     // Fetch Ergebnisse parsen und als Liste speichern
     const resultBody = await result.text();         
     const birdList = JSON.parse(resultBody);
+    const listLength = birdList.length;
 
     // In diesem HTML-String werden die Container aufgebaut:
     let resultsHTML = ""
@@ -26,8 +34,9 @@ async function addResultBoxes(){
         console.log(resultsHTML);
 
     }
-    // Ergebnis in den Container einfügen
+    // Ergebnis in die Container einfügen
     browseFrame.innerHTML = resultsHTML;
+    birdCountElement.textContent = `${listLength} Vögel insgesamt gefunden`;
 
 }
 
@@ -61,4 +70,4 @@ function makeResultBox(data){
     return htmlSnippte;
 }
 
-addResultBoxes()
+addResultBoxes("robin")
