@@ -65,6 +65,44 @@ app.get("/api/birds/:id", (req, res)=>{
     res.json(bird);
 });
 
+
+app.get("/api/birds/search/:keyword", (req, res) => {
+  const keyword = req.params.keyword || "";
+  // Fuzzy search: case-insensitive, match anywhere in the name
+  const like = `%${keyword}%`;
+
+  const stmt = db.prepare(`
+    SELECT
+      Bird.BirdID,
+      Bird.CommonName,
+      Bird.ScientificName,
+      Bird.Height,
+      Bird.Weight,
+      Bird.AverageAge,
+      Bird.Description,
+      Habitat.HabitatID,
+      Habitat.HabitatName,
+      BirdImage.ImagePath
+    FROM Bird
+    JOIN Habitat ON Bird.HabitatID = Habitat.HabitatID
+    LEFT JOIN BirdImage
+      ON Bird.BirdID = BirdImage.BirdID
+      AND BirdImage.IsMainImage = 1
+    WHERE LOWER(Bird.CommonName) LIKE LOWER(?)
+    ORDER BY Bird.CommonName
+    LIMIT 100
+  `);
+
+  const birds = stmt.all(like); 
+
+  if (!birds || birds.length === 0) {
+    return res.status(404).json({ error: "No birds found" });
+  }
+
+  res.json(birds);
+});
+
+
 app.get("/api/habitats", (req,res) => {
     const habitats = db.prepare(`
     SELECT
