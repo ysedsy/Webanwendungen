@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Allgemeine Diskussion — u.hu</title>
+        <title>Beobachtungen — u.hu</title>
         <link
             rel="icon"
             type="image/x-icon"
@@ -14,47 +14,13 @@
 
     <body>
         <div class="frame">
-            <header class="topbar">
-                <a class="logo" href="index.html" aria-label="Zur Startseite">
-                    <picture>
-                        <img
-                            src="./logos/u_hu_logo_clean_transparent.png"
-                            alt="Logo"
-                        />
-                    </picture>
-                </a>
-                <a class="nav-link" href="index.html">Startseite</a>
-                <div class="search-wrap">
-                    <div class="search-input-wrap">
-                        <input
-                            type="text"
-                            class="search-bar"
-                            placeholder="Vögel suchen..."
-                        />
-                        <button
-                            class="search-clear"
-                            type="button"
-                            aria-label="Suchfeld leeren"
-                        >
-                            ✕
-                        </button>
-                    </div>
-                    <button
-                        class="search-button"
-                        onclick="window.location.href = 'browse_search.html'"
-                    >
-                        Suchen
-                    </button>
-                </div>
-                <a class="nav-link" href="browse.html">Entdecken</a>
-                <a class="nav-link" href="forum_feed.html">Forum</a>
-            </header>
+            <div data-include="partials/header.html"></div>
 
             <main class="forum-page">
                 <section class="feed-window" aria-label="Forum topic posts">
                     <div class="forum-feed">
                         <div class="forum-feed-header">
-                            <h1>Allgemeine Diskussion</h1>
+                            <h1>Beobachtungen</h1>
                             <div class="forum-actions">
                                 <a
                                     class="submit-button"
@@ -68,21 +34,21 @@
                             <header class="thread-card-header">
                                 <span class="thread-topic">Thread</span>
                                 <span class="thread-meta"
-                                    >25.04.2026 bis 27.04.2026</span
+                                    >18.04.2026 bis 19.04.2026</span
                                 >
                             </header>
-                            <h2 class="thread-title">Frühlingsbeobachtungen</h2>
+                            <h2 class="thread-title">Reiher am Flussufer</h2>
 
                             <div class="reply-tree" aria-label="Antwortbaum">
                                 <article class="reply-item">
                                     <header class="post-header">
-                                        <span>Anna</span>
-                                        <span>25.04.2026</span>
+                                        <span>Leonie</span>
+                                        <span>19.04.2026</span>
                                     </header>
                                     <div class="post-body">
-                                        Hat jemand dieses Jahr schon einen
-                                        Kuckuck gesehen? Ich dachte, ich hätte
-                                        einen Ruf gehört, war mir aber unsicher.
+                                        Heute früh stand ein grauer Reiher
+                                        direkt am Ufer. Er blieb mehrere Minuten
+                                        fast unbeweglich.
                                     </div>
                                     <a
                                         class="reply-button"
@@ -92,13 +58,14 @@
                                     <div class="reply-children">
                                         <article class="reply-item">
                                             <header class="post-header">
-                                                <span>Bernd</span>
-                                                <span>26.04.2026</span>
+                                                <span>Mika</span>
+                                                <span>19.04.2026</span>
                                             </header>
                                             <div class="post-body">
-                                                Ich habe letzte Woche in meinem
-                                                Garten einen gehört. War
-                                                deutlich zu hören.
+                                                Gestern war dort ebenfalls
+                                                einer. Vermutlich derselbe Vogel
+                                                oder ein zweiter im selben
+                                                Abschnitt.
                                             </div>
                                             <a
                                                 class="reply-button"
@@ -108,12 +75,13 @@
                                             <div class="reply-children">
                                                 <article class="reply-item">
                                                     <header class="post-header">
-                                                        <span>Clara</span>
-                                                        <span>26.04.2026</span>
+                                                        <span>Sara</span>
+                                                        <span>19.04.2026</span>
                                                     </header>
                                                     <div class="post-body">
-                                                        Danke für die Info. Wo
-                                                        ungefähr war das?
+                                                        An der Stelle habe ich
+                                                        ihn auch gesehen. Unter
+                                                        dem Baum links vom Steg.
                                                     </div>
                                                     <a
                                                         class="reply-button"
@@ -131,12 +99,10 @@
                 </section>
             </main>
 
-            <footer class="footer">
-                <nav class="footer-links">
-                    <a href="impressum.html">Kontakt</a>
-                    <a href="agb.html">AGBs</a>
-                </nav>
-            </footer>
+            <div data-include="partials/footer.html"></div>
         </div>
-    </body>
+        <script src="scripts/layout-includes.js" defer></script>
+</body>
 </html>
+
+

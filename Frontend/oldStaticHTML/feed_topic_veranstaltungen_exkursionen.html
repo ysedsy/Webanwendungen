@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Beobachtungen — u.hu</title>
+        <title>Veranstaltungen & Exkursionen — u.hu</title>
         <link
             rel="icon"
             type="image/x-icon"
@@ -14,47 +14,13 @@
 
     <body>
         <div class="frame">
-            <header class="topbar">
-                <a class="logo" href="index.html" aria-label="Zur Startseite">
-                    <picture>
-                        <img
-                            src="./logos/u_hu_logo_clean_transparent.png"
-                            alt="Logo"
-                        />
-                    </picture>
-                </a>
-                <a class="nav-link" href="index.html">Startseite</a>
-                <div class="search-wrap">
-                    <div class="search-input-wrap">
-                        <input
-                            type="text"
-                            class="search-bar"
-                            placeholder="Vögel suchen..."
-                        />
-                        <button
-                            class="search-clear"
-                            type="button"
-                            aria-label="Suchfeld leeren"
-                        >
-                            ✕
-                        </button>
-                    </div>
-                    <button
-                        class="search-button"
-                        onclick="window.location.href = 'browse_search.html'"
-                    >
-                        Suchen
-                    </button>
-                </div>
-                <a class="nav-link" href="browse.html">Entdecken</a>
-                <a class="nav-link" href="forum_feed.html">Forum</a>
-            </header>
+            <div data-include="partials/header.html"></div>
 
             <main class="forum-page">
                 <section class="feed-window" aria-label="Forum topic posts">
                     <div class="forum-feed">
                         <div class="forum-feed-header">
-                            <h1>Beobachtungen</h1>
+                            <h1>Veranstaltungen & Exkursionen</h1>
                             <div class="forum-actions">
                                 <a
                                     class="submit-button"
@@ -68,21 +34,21 @@
                             <header class="thread-card-header">
                                 <span class="thread-topic">Thread</span>
                                 <span class="thread-meta"
-                                    >18.04.2026 bis 19.04.2026</span
+                                    >12.04.2026 bis 15.04.2026</span
                                 >
                             </header>
-                            <h2 class="thread-title">Reiher am Flussufer</h2>
+                            <h2 class="thread-title">Exkursion am Samstag</h2>
 
                             <div class="reply-tree" aria-label="Antwortbaum">
                                 <article class="reply-item">
                                     <header class="post-header">
-                                        <span>Leonie</span>
-                                        <span>19.04.2026</span>
+                                        <span>Jana</span>
+                                        <span>12.04.2026</span>
                                     </header>
                                     <div class="post-body">
-                                        Heute früh stand ein grauer Reiher
-                                        direkt am Ufer. Er blieb mehrere Minuten
-                                        fast unbeweglich.
+                                        Wer hat Lust auf eine kleine Exkursion
+                                        ins Feuchtgebiet? Treffpunkt wäre am
+                                        Samstag um 8 Uhr.
                                     </div>
                                     <a
                                         class="reply-button"
@@ -92,14 +58,13 @@
                                     <div class="reply-children">
                                         <article class="reply-item">
                                             <header class="post-header">
-                                                <span>Mika</span>
-                                                <span>19.04.2026</span>
+                                                <span>Oskar</span>
+                                                <span>13.04.2026</span>
                                             </header>
                                             <div class="post-body">
-                                                Gestern war dort ebenfalls
-                                                einer. Vermutlich derselbe Vogel
-                                                oder ein zweiter im selben
-                                                Abschnitt.
+                                                Ich bin dabei. Soll ich das
+                                                Fernglas und das Spektiv
+                                                mitbringen?
                                             </div>
                                             <a
                                                 class="reply-button"
@@ -109,13 +74,31 @@
                                             <div class="reply-children">
                                                 <article class="reply-item">
                                                     <header class="post-header">
-                                                        <span>Sara</span>
-                                                        <span>19.04.2026</span>
+                                                        <span>Jana</span>
+                                                        <span>15.04.2026</span>
                                                     </header>
                                                     <div class="post-body">
-                                                        An der Stelle habe ich
-                                                        ihn auch gesehen. Unter
-                                                        dem Baum links vom Steg.
+                                                        Ja, gern. Dann halten
+                                                        wir den Ablauf im selben
+                                                        Baum mit weiteren
+                                                        Antworten aktuell.
+                                                    </div>
+                                                    <a
+                                                        class="reply-button"
+                                                        href="forum_create_post.html"
+                                                        >Antworten</a
+                                                    >
+                                                </article>
+                                                <article class="reply-item">
+                                                    <header class="post-header">
+                                                        <span>Mila</span>
+                                                        <span>15.04.2026</span>
+                                                    </header>
+                                                    <div class="post-body">
+                                                        Ich komme auch mit. Ich
+                                                        antworte dann später
+                                                        direkt unter dieser
+                                                        Zusage.
                                                     </div>
                                                     <a
                                                         class="reply-button"
@@ -133,12 +116,10 @@
                 </section>
             </main>
 
-            <footer class="footer">
-                <nav class="footer-links">
-                    <a href="impressum.html">Impressum</a>
-                    <a href="agb.html">AGBs</a>
-                </nav>
-            </footer>
+            <div data-include="partials/footer.html"></div>
         </div>
-    </body>
+        <script src="scripts/layout-includes.js" defer></script>
+</body>
 </html>
+
+

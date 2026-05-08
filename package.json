@@ -1,0 +1,19 @@
+{
+  "name": "webeanwendungen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static frontend host for Webanwendungen",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}

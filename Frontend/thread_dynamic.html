@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Allgemeine Diskussion — u.hu</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="./logos/u_hu_logo_clean_transparent.png"
+        />
+        <link rel="stylesheet" href="styles/styles.css" />
+    </head>
+
+    <body>
+        <div class="frame">
+            <div data-include="partials/header.html"></div>
+
+            <main class="forum-page">
+                <section class="feed-window" aria-label="Forum topic posts">
+                    <div class="forum-feed">
+                        <div class="forum-feed-header">
+                            <h1>Allgemeine Diskussion</h1>
+                            <div class="forum-actions">
+                                <a
+                                    class="submit-button"
+                                    href="forum_create_post.html"
+                                    >Post im Thread verfassen</a
+                                >
+                            </div>
+                        </div>
+                        <article class="thread-card"></article>
+                    </div>
+                </section>
+            </main>
+
+            <div data-include="partials/footer.html"></div>
+        </div>
+    <script src="scripts/headerInit.js" defer></script>
+    <script src="scripts/layout-includes.js" defer></script>
+    <script src="scripts/thread.js"></script>
+</body>
+</html>
+
+
