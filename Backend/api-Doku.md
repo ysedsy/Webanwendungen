@@ -1,5 +1,9 @@
 # Dokumentation der API
 
+## Swagger / OpenAPI
+
+Die Swagger/OpenAPI-Beschreibung liegt in [openapi.yaml](openapi.yaml).
+
 # Vogel Datenbank
 
 ## `GET /api/birds`

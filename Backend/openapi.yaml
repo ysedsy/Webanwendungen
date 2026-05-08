@@ -1,0 +1,394 @@
+openapi: 3.0.3
+info:
+  title: Bird Lexicon API
+  version: 1.0.0
+  description: OpenAPI specification for the Bird Lexicon backend.
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: Health
+  - name: Birds
+  - name: Habitats
+  - name: Threads
+paths:
+  /api:
+    get:
+      tags:
+        - Health
+      summary: Check whether the API is running
+      responses:
+        '200':
+          description: API status text
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Bird Lexicon API is running
+
+  /api/birds:
+    get:
+      tags:
+        - Birds
+      summary: Get all birds
+      responses:
+        '200':
+          description: A list of birds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bird'
+
+  /api/birds/{id}:
+    get:
+      tags:
+        - Birds
+      summary: Get a bird by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: BirdID of the bird to fetch
+      responses:
+        '200':
+          description: Bird found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bird'
+        '404':
+          description: Bird not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/birds/search/{keyword}:
+    get:
+      tags:
+        - Birds
+      summary: Search birds by common name
+      parameters:
+        - name: keyword
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Case-insensitive substring search for CommonName
+      responses:
+        '200':
+          description: Matching birds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bird'
+        '404':
+          description: No birds matched the keyword
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/habitats:
+    get:
+      tags:
+        - Habitats
+      summary: Get all habitats
+      responses:
+        '200':
+          description: A list of habitats
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Habitat'
+
+  /api/threads:
+    get:
+      tags:
+        - Threads
+      summary: Get all forum threads
+      responses:
+        '200':
+          description: A list of threads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThreadSummary'
+    post:
+      tags:
+        - Threads
+      summary: Create a new thread with its first post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateThreadRequest'
+      responses:
+        '201':
+          description: Thread created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateThreadResponse'
+        '400':
+          description: Missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/threads/{id}:
+    get:
+      tags:
+        - Threads
+      summary: Get one thread and all posts in it
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ThreadID of the thread to fetch
+      responses:
+        '200':
+          description: Thread with posts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreadDetail'
+        '404':
+          description: Thread not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/threads/{id}/posts:
+    post:
+      tags:
+        - Threads
+      summary: Add a post to an existing thread
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ThreadID of the thread to post into
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostRequest'
+      responses:
+        '201':
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePostResponse'
+        '400':
+          description: Missing post text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Thread not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    Bird:
+      type: object
+      properties:
+        BirdID:
+          type: integer
+          example: 1
+        CommonName:
+          type: string
+          example: European Robin
+        ScientificName:
+          type: string
+          example: Erithacus rubecula
+        Height:
+          type: number
+          example: 14
+        Weight:
+          type: number
+          example: 0.02
+        AverageAge:
+          type: number
+          example: 2
+        Description:
+          type: string
+          example: Small, orange-breasted songbird common in Europe.
+        HabitatID:
+          type: integer
+          example: 1
+        HabitatName:
+          type: string
+          example: Forest
+        ImagePath:
+          type: string
+          nullable: true
+          example: /images/birds/Rotkehlchen.jpg
+      required:
+        - BirdID
+        - CommonName
+        - ScientificName
+        - Height
+        - Weight
+        - AverageAge
+        - Description
+        - HabitatID
+        - HabitatName
+
+    Habitat:
+      type: object
+      properties:
+        HabitatID:
+          type: integer
+          example: 1
+        HabitatName:
+          type: string
+          example: Forest
+      required:
+        - HabitatID
+        - HabitatName
+
+    ThreadSummary:
+      type: object
+      properties:
+        ThreadID:
+          type: integer
+          example: 9
+        ThreadTitle:
+          type: string
+          example: Thread for reply test
+      required:
+        - ThreadID
+        - ThreadTitle
+
+    Post:
+      type: object
+      properties:
+        PostID:
+          type: integer
+          example: 12
+        UserName:
+          type: string
+          example: Tester
+        PostText:
+          type: string
+          example: First post.
+        DateCreated:
+          type: string
+          example: '2026-05-06 12:54:03'
+        ThreadID:
+          type: integer
+          example: 9
+        ParentID:
+          type: integer
+          nullable: true
+          example: null
+      required:
+        - PostID
+        - UserName
+        - PostText
+        - DateCreated
+        - ThreadID
+        - ParentID
+
+    ThreadDetail:
+      allOf:
+        - $ref: '#/components/schemas/ThreadSummary'
+        - type: object
+          properties:
+            posts:
+              type: array
+              items:
+                $ref: '#/components/schemas/Post'
+          required:
+            - posts
+
+    CreateThreadRequest:
+      type: object
+      properties:
+        threadTitle:
+          type: string
+          example: Test Thread
+        userName:
+          type: string
+          example: Anonymous
+        postText:
+          type: string
+          example: This is a test post.
+      required:
+        - threadTitle
+        - postText
+
+    CreateThreadResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Thread created
+        threadID:
+          type: integer
+          example: 10
+      required:
+        - message
+        - threadID
+
+    CreatePostRequest:
+      type: object
+      properties:
+        userName:
+          type: string
+          example: ReplyUser
+        postText:
+          type: string
+          example: This is a reply.
+        parentID:
+          type: integer
+          nullable: true
+          example: null
+      required:
+        - postText
+
+    CreatePostResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Post created
+        postID:
+          type: integer
+          example: 13
+      required:
+        - message
+        - postID
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Thread not found
+      required:
+        - error
