@@ -1,20 +1,32 @@
 # Praktikum Webanwendungen
 
-todo …
+## Who is who?
 
-Who is who?
+Frontend Team: 
+- Felix
+- Fabian 
 
-Frontend Team: Felix, Fabian 
+Backend Team: 
+- Thorben
+- Jan
 
-Backend Team: Thorben, Jan
 
-## Frontend lokal mit Express starten
+## To-Do
 
-Damit Includes wie Header und Footer ohne file:// CORS-Fehler funktionieren, das Frontend ueber HTTP starten:
+- Datenbank befüllen und Werte kontrollieren
+- Backend API anpassen
+- create_post dynamisch machen (vorher Rücksprache wegen Datenbank Struktur)
 
-1. Abhaengigkeiten installieren
-	npm install
-2. Server starten
-	npm start
-3. Im Browser oeffnen
-	http://localhost:3000
+## App Starten
+
+```bash
+# 1. Ins Backend wechseln
+cd Backend
+# 2. Abhaengigkeiten installieren 
+npm install
+# 3. Server starten
+npm start
+# 4. Im Browser öffnen
+# http://localhost:3000
+```
+
