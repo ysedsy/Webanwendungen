@@ -19,6 +19,8 @@ async function addDetailContent(id){
 
     const htmlSnippet = `
         <h1 class="bird-detail-title">${birdDetails.CommonName}</h1>
+
+        <div>
         <img class="bird-detail-image" src="${birdDetails.ImagePath}" alt="Bild von ${birdDetails.CommonName}"/>
 
         <table>
@@ -32,7 +34,7 @@ async function addDetailContent(id){
             </tr>
             <tr>
                 <td><strong>Gewicht</strong></td>
-                <td>${birdDetails.Weight} kg</td>
+                <td>${birdDetails.Weight} g</td>
             </tr>
             <tr>
                 <td><strong>Durchscnittliches Alter</strong></td>
@@ -43,6 +45,7 @@ async function addDetailContent(id){
                 <td>${birdDetails.HabitatName}</td>
             </tr>
         </table>
+        </div>
         <div class="bird-detail-text">${birdDetails.Description}</div>
     `
     detailMainFrame.innerHTML = htmlSnippet;

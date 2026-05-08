@@ -62,7 +62,7 @@ function makeResultBox(data){
                 </tr>
                 <tr>
                     <td>Gewicht</td>
-                    <td>${birdWeight} kg</td>
+                    <td>${birdWeight} g</td>
                 </tr>
             </table>
         </div>
