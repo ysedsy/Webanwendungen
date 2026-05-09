@@ -1,33 +1,31 @@
+async function fillThreadContainer(id) {
+  // Im Thread Card Container werdenThreadüberschriften und Posts gesammelt:
+  const threadCard = document.querySelector(".thread-card");
 
+  // fetch Befehl zusammensetzen:
+  const api = `/api/threads/${id}`;
+  const result = await fetch(api, { method: "GET" });
 
-async function fillThreadContainer(id){
-    // Im Thread Card Container werdenThreadüberschriften und Posts gesammelt:
-    const threadCard = document.querySelector(".thread-card");
+  if (result.status != 200) {
+    let ErrorMessage = `Es konnte kein Thread mit der ID ${id} gefunden werden!`;
+    console.error(ErrorMessage);
+    threadCard.innerHTML = ErrorMessage;
+    return;
+  }
 
-    // fetch Befehl zusammensetzen:
-    const api = `/api/threads/${id}`
-    const result = await fetch(api, {"method": "GET"});
+  // Result parsen
+  const resultBody = await result.text();
+  const threadJSON = JSON.parse(resultBody);
+  const postList = threadJSON.posts;
+  const postCount = postList.length;
 
-    if (result.status != 200) {
-        let ErrorMessage = `Es konnte kein Thread mit der ID ${id} gefunden werden!`
-        console.error(ErrorMessage)
-        threadCard.innerHTML = ErrorMessage;
-        return
-    } 
+  // Werte den Header aus JSON parsen
+  const ThreadTitle = threadJSON.ThreadTitle;
+  const firstDate = parseDate(postList[0].DateCreated);
+  const lastDate = parseDate(postList[postCount - 1].DateCreated);
 
-    // Result parsen
-    const resultBody = await result.text();         
-    const threadJSON = JSON.parse(resultBody);
-    const postList = threadJSON.posts;
-    const postCount = postList.length;
-
-    // Werte den Header aus JSON parsen
-    const ThreadTitle = threadJSON.ThreadTitle;
-    const firstDate = parseDate(postList[0].DateCreated); 
-    const lastDate = parseDate(postList[postCount -1].DateCreated);
-
-    // HTML für header zusammenfügen:
-    let threadCardHTML = `
+  // HTML für header zusammenfügen:
+  let threadCardHTML = `
         <header class="thread-card-header">
             <span class="thread-topic">$FEHLT</span>
             <span class="thread-meta"
@@ -35,25 +33,23 @@ async function fillThreadContainer(id){
             >
         </header>
         <h2 class="thread-title">${ThreadTitle}</h2>
-        `
+        `;
 
-    for (let i = 0; i < postCount; i++){
-        threadCardHTML += createPostContainer(postList[i]);
-    }
+  for (let i = 0; i < postCount; i++) {
+    threadCardHTML += createPostContainer(postList[i]);
+  }
 
-    threadCard.innerHTML = threadCardHTML;
-    return
+  threadCard.innerHTML = threadCardHTML;
+  return;
 }
 
-
-function createPostContainer(data){
-    
-    let htmlSnippet = `
+function createPostContainer(data) {
+  let htmlSnippet = `
         <div class="reply-tree" aria-label="Antwortbaum">
         <article class="reply-item">
             <header class="post-header">
                 <span>${data.UserName}</span>
-                <span>25.04.${parseDate(data.DateCreated)}</span>
+                <span>${parseDate(data.DateCreated)}</span>
             </header>
             <div class="post-body">${data.PostText}</div>
             <a
@@ -62,20 +58,19 @@ function createPostContainer(data){
                 >Antworten</a
             >
     `;
-    return htmlSnippet;
+  return htmlSnippet;
 }
 
-function parseDate(date){
-    let Date = date.split(" ")[0];
-    let yearMonthDay = Date.split("-");
-    let year = yearMonthDay[0]
-    let month = yearMonthDay[1]
-    let day = yearMonthDay[2]
-    let germanDate = `${day}.${month}.${year}`
-    return germanDate;
+function parseDate(date) {
+  let Date = date.split(" ")[0];
+  let yearMonthDay = Date.split("-");
+  let year = yearMonthDay[0];
+  let month = yearMonthDay[1];
+  let day = yearMonthDay[2];
+  let germanDate = `${day}.${month}.${year}`;
+  return germanDate;
 }
-
 
 const params = new URLSearchParams(window.location.search);
-const id = params.get('id'); 
-fillThreadContainer(id)
+const id = params.get("id");
+fillThreadContainer(id);
