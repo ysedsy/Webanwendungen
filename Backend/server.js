@@ -184,8 +184,8 @@ app.get("/api/threads/:id", (req,res) => {
     }
 
     res.json({
-        ...thread,
-        posts: rootPosts
+        ...thread, // kopiert alle Eigenschaften des thread-Objekts mit dem Objekt-Spread-Operator ("...thread")
+        posts: rootPosts //added eine Eigenschaft mit KEY:posts und VALUE:<rootPosts>(der geschachtelte post-tree)
     });
 });
 
