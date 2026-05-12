@@ -64,7 +64,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Bird not found
+                required:
+                  - error
 
   /api/birds/search/{keyword}:
     get:
@@ -92,7 +98,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: No birds found
+                required:
+                  - error
 
   /api/habitats:
     get:
@@ -145,7 +157,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: threadTitle and postText are required
+                required:
+                  - error
 
   /api/threads/{id}:
     get:
@@ -171,7 +189,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Thread not found
+                required:
+                  - error
 
   /api/threads/{id}/posts:
     post:
@@ -203,13 +227,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: postText is required
+                required:
+                  - error
         '404':
           description: Thread not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Thread not found
+                required:
+                  - error
 
 components:
   schemas:
@@ -280,9 +316,14 @@ components:
         ThreadTitle:
           type: string
           example: Thread for reply test
+        LastPostDate:
+          type: string
+          nullable: true
+          example: '2026-05-06 12:54:03'
       required:
         - ThreadID
         - ThreadTitle
+        - LastPostDate
 
     Post:
       type: object
@@ -306,6 +347,11 @@ components:
           type: integer
           nullable: true
           example: null
+        Children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+          example: []
       required:
         - PostID
         - UserName
@@ -313,18 +359,25 @@ components:
         - DateCreated
         - ThreadID
         - ParentID
+        - Children
 
     ThreadDetail:
-      allOf:
-        - $ref: '#/components/schemas/ThreadSummary'
-        - type: object
-          properties:
-            posts:
-              type: array
-              items:
-                $ref: '#/components/schemas/Post'
-          required:
-            - posts
+      type: object
+      properties:
+        ThreadID:
+          type: integer
+          example: 9
+        ThreadTitle:
+          type: string
+          example: Thread for reply test
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+      required:
+        - ThreadID
+        - ThreadTitle
+        - posts
 
     CreateThreadRequest:
       type: object
@@ -384,11 +437,3 @@ components:
         - message
         - postID
 
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Thread not found
-      required:
-        - error
