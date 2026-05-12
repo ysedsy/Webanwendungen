@@ -21,8 +21,8 @@ async function fillThreadContainer(id) {
 
   // Werte den Header aus JSON parsen
   const ThreadTitle = threadJSON.ThreadTitle;
-  const firstDate = parseDate(postList[0].DateCreated);
-  const lastDate = parseDate(postList[postList.length - 1].DateCreated);
+  const firstDate = formatToDateOnly(postList[0].DateCreated);
+  const lastDate = formatToDateOnly(postList[postList.length - 1].DateCreated);
 
   // HTML für header zusammenfügen:
   let threadCardHTML = `
@@ -53,7 +53,7 @@ function createPostContainer(data) {
             <article class="reply-item">
             <header class="post-header">
                 <span>${data.UserName}</span>
-                <span>${parseDate(data.DateCreated)}</span>
+                <span>${formatToDateTime(data.DateCreated)}</span>
             </header>
             <div class="post-body">${data.PostText}</div>
             <a
@@ -98,7 +98,7 @@ function collectPosts(posts) {
   return flat;
 }
 
-function parseDate(date) {
+function formatToDateOnly(date) {
   let Date = date.split(" ")[0];
   let yearMonthDay = Date.split("-");
   let year = yearMonthDay[0];
@@ -106,6 +106,17 @@ function parseDate(date) {
   let day = yearMonthDay[2];
   let germanDate = `${day}.${month}.${year}`;
   return germanDate;
+}
+
+// wie formatToDateOnly, aber mit Stunde und Minute: "dd.mm.yyyy hh:mm"
+function formatToDateTime(date) {
+  const parts = date.split(" ");
+  const Date = formatToDateOnly(parts[0]);
+  const hour = parts[1].split(":")[0]; 
+  const minute = parts[1].split(":")[1]; 
+  const Time = `${hour}:${minute}`;
+
+  return `${Date} ${Time}`;
 }
 
 const params = new URLSearchParams(window.location.search);
