@@ -21,8 +21,8 @@ async function fillThreadContainer(id) {
 
   // Werte den Header aus JSON parsen
   const ThreadTitle = threadJSON.ThreadTitle;
-  const firstDate = formatToDateOnly(postList[0].DateCreated);
-  const lastDate = formatToDateOnly(postList[postList.length - 1].DateCreated);
+  const firstDate = postList.length > 0 ? formatToDateOnly(postList[0].DateCreated) : "-";
+  const lastDate = postList.length > 0 ? formatToDateOnly(postList[postList.length - 1].DateCreated) : "-";
 
   // HTML für header zusammenfügen:
   let threadCardHTML = `
@@ -98,26 +98,7 @@ function collectPosts(posts) {
   return flat;
 }
 
-function formatToDateOnly(date) {
-  let Date = date.split(" ")[0];
-  let yearMonthDay = Date.split("-");
-  let year = yearMonthDay[0];
-  let month = yearMonthDay[1];
-  let day = yearMonthDay[2];
-  let germanDate = `${day}.${month}.${year}`;
-  return germanDate;
-}
 
-// wie formatToDateOnly, aber mit Stunde und Minute: "dd.mm.yyyy hh:mm"
-function formatToDateTime(date) {
-  const parts = date.split(" ");
-  const Date = formatToDateOnly(parts[0]);
-  const hour = parts[1].split(":")[0]; 
-  const minute = parts[1].split(":")[1]; 
-  const Time = `${hour}:${minute}`;
-
-  return `${Date} ${Time}`;
-}
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");

@@ -32,7 +32,7 @@ async function fillFeed(){
 function buildThreadContainer(data){
     const ThreadID = data.ThreadID;
     const ThreadTitle = data.ThreadTitle;
-    const LastPostDate = parseDate(data.LastPostDate);
+    const LastPostDate = formatToDateOnly(data.LastPostDate) || "Noch keine Beiträge";
 
     
 
@@ -52,13 +52,4 @@ function buildThreadContainer(data){
     return htmlSnippet;
 }
 
-function parseDate(date) {
-  let Date = date.split(" ")[0];
-  let yearMonthDay = Date.split("-");
-  let year = yearMonthDay[0];
-  let month = yearMonthDay[1];
-  let day = yearMonthDay[2];
-  let germanDate = `${day}.${month}.${year}`;
-  return germanDate;
-}
 fillFeed();
