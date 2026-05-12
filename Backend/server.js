@@ -111,11 +111,18 @@ app.get("/api/birds/search/:keyword", (req, res) => {
 
 
 app.get("/api/habitats", (req,res) => {
+    //MAX(ForumPost.DateCreated) holt das letzte Post‑Datum je Thread
+    //LEFT JOIN stellt sicher, dass Threads ohne Posts trotzdem kommen (dann ist LastPostDate null)
     const habitats = db.prepare(`
     SELECT
-        HabitatID,
-        HabitatName
-    FROM Habitat
+        ForumThread.ThreadID,
+        ForumThread.ThreadTitle,
+        MAX(ForumPost.DateCreated) AS LastPostDate
+    FROM ForumThread
+    LEFT JOIN ForumPost
+        ON ForumPost.ThreadID = ForumThread.ThreadID
+    GROUP BY ForumThread.ThreadID, ForumThread.ThreadTitle
+    ORDER BY ForumThread.ThreadID DESC
     `).all();
 
     res.json(habitats);
@@ -159,9 +166,27 @@ app.get("/api/threads/:id", (req,res) => {
     ORDER BY DateCreated ASC
     `).all(req.params.id);
 
+    //post tree bauen: jeder Post kann mehrere Children-Posts haben
+    const postMap = new Map(); // Map ist eine Datenstruktur, die Key:Value Paare speichert -> schnelle Suche nach Key ; Der KEY ist hier die PostID, der VALUE ist das komplette Post-Objekt
+    for (const post of posts) { //Wir gehen jeden Post aus der DB durch (posts ist das flache Array)
+        //Wir legen ihn in die Map, damit wir ihn später per PostID finden können
+        //Wir fügen direkt Children: [] hinzu, damit jeder Post später Kinder speichern kann
+        postMap.set(post.PostID, { ...post, Children: [] }); 
+        //Ergebnis: postMap enthält alle Posts, schnell zugreifbar über PostID
+    }
+
+    const rootPosts = [];
+    for (const post of postMap.values()) { //alle Posts aus der Map durchgehen
+        if (post.ParentID && postMap.has(post.ParentID)) { //falls ein Post eine ParentID hat, suchen wir den Elternpost in der Map und haengen den aktuellen Post an dessen Children.
+            postMap.get(post.ParentID).Children.push(post); 
+        } else { // falls kein ParentID da ist, ist es ein Root-Post und kommt in rootPosts, da sind die obersten Posts drin
+            rootPosts.push(post);
+        }
+    }
+
     res.json({
         ...thread,
-        posts
+        posts: rootPosts
     });
 });
 
