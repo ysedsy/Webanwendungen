@@ -20,9 +20,9 @@
                 <section class="feed-window" aria-label="Forum topic posts">
                     <div class="forum-feed">
                         <div class="forum-feed-header">
-                            <h1>Allgemeine Diskussion</h1>
                             <div class="forum-actions">
                                 <a
+                                    id="reply-thread-link"
                                     class="submit-button"
                                     href="forum_create_post.html"
                                     >Post im Thread verfassen</a
@@ -38,7 +38,17 @@
         </div>
     <script src="scripts/headerInit.js" defer></script>
     <script src="scripts/layout-includes.js" defer></script>
-    <script src="scripts/thread.js"></script>
+    <script src="scripts/dateUtils.js" defer></script>
+    <script src="scripts/thread.js" defer></script>
+    <script>
+        const replyThreadLink = document.getElementById("reply-thread-link");
+        if (replyThreadLink) {
+            const id = new URLSearchParams(window.location.search).get("id");
+            if (id) {
+                replyThreadLink.href = `forum_create_post.html?id=${id}`;
+            }
+        }
+    </script>
 </body>
 </html>
 
