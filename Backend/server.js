@@ -111,9 +111,20 @@ app.get("/api/birds/search/:keyword", (req, res) => {
 
 
 app.get("/api/habitats", (req,res) => {
+    const habitats = db.prepare(`
+    SELECT
+        HabitatID,
+        HabitatName
+    FROM Habitat
+    `).all();
+
+    res.json(habitats);
+});
+
+app.get("/api/threads", (req,res)=>{
     //MAX(ForumPost.DateCreated) holt das letzte Post‑Datum je Thread
     //LEFT JOIN stellt sicher, dass Threads ohne Posts trotzdem kommen (dann ist LastPostDate null)
-    const habitats = db.prepare(`
+    const threads = db.prepare(`
     SELECT
         ForumThread.ThreadID,
         ForumThread.ThreadTitle,
@@ -123,18 +134,6 @@ app.get("/api/habitats", (req,res) => {
         ON ForumPost.ThreadID = ForumThread.ThreadID
     GROUP BY ForumThread.ThreadID, ForumThread.ThreadTitle
     ORDER BY ForumThread.ThreadID DESC
-    `).all();
-
-    res.json(habitats);
-});
-
-app.get("/api/threads", (req,res)=>{
-    const threads = db.prepare(`
-    SELECT
-        ThreadID,
-        ThreadTitle
-    FROM ForumThread
-    ORDER BY ThreadID DESC
     `).all();
 
     res.json(threads);
