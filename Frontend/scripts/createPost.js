@@ -53,10 +53,10 @@ async function createPost(event) {
 
 async function fillCreatePostPage() {
     const threadCard = document.querySelector(".thread-card");
-    const threadTitleElement = document.querySelector(".thread-title");
+    const threadTitleLink = document.querySelector(".thread-title a");
     const threadMetaElement = document.querySelector(".thread-card-header .thread-meta");
 
-    if (!threadCard || !threadTitleElement || !threadMetaElement) {
+    if (!threadCard || !threadTitleLink || !threadMetaElement) {
         return;
     }
 
@@ -78,7 +78,8 @@ async function fillCreatePostPage() {
     const threadJSON = await result.json();
     const threadTitle = threadJSON.ThreadTitle || "Ohne Titel";
 
-    threadTitleElement.textContent = threadTitle;
+    threadTitleLink.textContent = threadTitle;
+    threadTitleLink.href = `thread_dynamic.html?id=${threadID}`;
     threadMetaElement.textContent = "Antwort auf bestehenden Thread";
 }
 
