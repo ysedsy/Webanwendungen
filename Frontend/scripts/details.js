@@ -37,7 +37,7 @@ async function addDetailContent(id){
                 <td>${birdDetails.Weight} g</td>
             </tr>
             <tr>
-                <td><strong>Durchscnittliches Alter</strong></td>
+                <td><strong>Durchschnittliches Alter</strong></td>
                 <td>${birdDetails.AverageAge} Jahre</td>
             </tr>
             <tr>

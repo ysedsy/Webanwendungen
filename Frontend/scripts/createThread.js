@@ -50,7 +50,7 @@ async function createThread(){
     const newThreadID = resultJSON.threadID
 
 
-    alert(`Der Post ${titleVal} wurde erstellt!`)
+    // alert(`Der Post ${titleVal} wurde erstellt!`)
     const newURL = `thread_dynamic.html?id=${newThreadID}`
     window.location.replace(newURL);
 }

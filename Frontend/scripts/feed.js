@@ -1,5 +1,4 @@
 
-
 async function fillFeed(){
     const FeedContainer = document.getElementById("thread-list");
 
@@ -33,13 +32,14 @@ async function fillFeed(){
 function buildThreadContainer(data){
     const ThreadID = data.ThreadID;
     const ThreadTitle = data.ThreadTitle;
+    const LastPostDate = formatToDateOnly(data.LastPostDate) || "Noch keine Beiträge";
 
     
 
     let htmlSnippet = `
     <article class="thread-card">
         <header class="thread-card-header">
-        <span class="thread-meta">Zuletzt: $FEHLT</span>
+        <span class="thread-meta">Zuletzt: ${LastPostDate}</span>
         </header>
         <h2 class="thread-title">
             <a
@@ -47,11 +47,9 @@ function buildThreadContainer(data){
                 >${ThreadTitle}</a
             >
         </h2>
-        <p class="thread-summary">$FEHLT</p>
     </article>
     `
     return htmlSnippet;
 }
-
 
 fillFeed();
