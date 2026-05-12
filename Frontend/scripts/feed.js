@@ -1,5 +1,4 @@
 
-
 async function fillFeed(){
     const FeedContainer = document.getElementById("thread-list");
 
@@ -33,13 +32,14 @@ async function fillFeed(){
 function buildThreadContainer(data){
     const ThreadID = data.ThreadID;
     const ThreadTitle = data.ThreadTitle;
+    const LastPostDate = parseDate(data.LastPostDate);
 
     
 
     let htmlSnippet = `
     <article class="thread-card">
         <header class="thread-card-header">
-        <span class="thread-meta">Zuletzt: $FEHLT</span>
+        <span class="thread-meta">Zuletzt: ${LastPostDate}</span>
         </header>
         <h2 class="thread-title">
             <a
@@ -47,11 +47,18 @@ function buildThreadContainer(data){
                 >${ThreadTitle}</a
             >
         </h2>
-        <p class="thread-summary">$FEHLT</p>
     </article>
     `
     return htmlSnippet;
 }
 
-
+function parseDate(date) {
+  let Date = date.split(" ")[0];
+  let yearMonthDay = Date.split("-");
+  let year = yearMonthDay[0];
+  let month = yearMonthDay[1];
+  let day = yearMonthDay[2];
+  let germanDate = `${day}.${month}.${year}`;
+  return germanDate;
+}
 fillFeed();
