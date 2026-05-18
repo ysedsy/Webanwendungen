@@ -17,40 +17,57 @@ async function addDetailContent(id){
     const resultBody = await result.text();         
     const birdDetails = JSON.parse(resultBody);
 
-    const htmlSnippet = `
-        <h1 class="bird-detail-title">${birdDetails.CommonName}</h1>
+    // Überschrift
+    const header = document.createElement("h1");
+    header.className = "bird-detail-title"
+    header.textContent = birdDetails.CommonName;
+    detailMainFrame.appendChild(header);
 
-        <div>
-        <img class="bird-detail-image" src="${birdDetails.ImagePath}" alt="Bild von ${birdDetails.CommonName}"/>
+    // Container DIV für table und Image
+    const ContainerDiv = document.createElement("div")
+    detailMainFrame.appendChild(ContainerDiv)
 
-        <table>
-            <tr>
-                <td><strong>Name</strong></td>
-                <td>${birdDetails.CommonName} (${birdDetails.ScientificName})</td>
-            </tr>
-            <tr>
-                <td><strong>Größe</strong></td>
-                <td>${birdDetails.Height} cm</td>
-            </tr>
-            <tr>
-                <td><strong>Gewicht</strong></td>
-                <td>${birdDetails.Weight} g</td>
-            </tr>
-            <tr>
-                <td><strong>Durchschnittliches Alter</strong></td>
-                <td>${birdDetails.AverageAge} Jahre</td>
-            </tr>
-            <tr>
-                <td><strong>Habitat</strong></td>
-                <td>${birdDetails.HabitatName}</td>
-            </tr>
-        </table>
-        </div>
-        <div class="bird-detail-text">${birdDetails.Description}</div>
-    `
-    detailMainFrame.innerHTML = htmlSnippet;
+    // Bild
+    const image = document.createElement("img");
+    image.src = birdDetails.ImagePath;
+    image.className = "bird-detail-image"
+    image.alt = `Bild von ${birdDetails.CommonName}`;
+    ContainerDiv.appendChild(image);
+
+
+    // Tabelle mit den Stammdaten
+    const table = document.createElement("table")
+    table.append(
+        buildInfoRow("Name", `${birdDetails.CommonName} (${birdDetails.ScientificName})`),
+        buildInfoRow("Größe", `${birdDetails.Height} cm`),
+        buildInfoRow("Gewicht", `${birdDetails.Weight} g`),
+        buildInfoRow("Durchschnittliches Alter", `${birdDetails.AverageAge} Jahre`),
+        buildInfoRow("Habitat", `${birdDetails.HabitatName}`),
+    );
+    ContainerDiv.append(table);
+
+    // div mit den Details
+    const infos = document.createElement("div");
+    infos.className = "bird-detail-text";
+    infos.textContent = birdDetails.Description;
+    detailMainFrame.appendChild(infos)
     return
 }
+
+function buildInfoRow(label, value) {
+  const row = document.createElement("tr");
+
+  const labelCell = document.createElement("td");
+  labelCell.textContent = label;
+
+  const valueCell = document.createElement("td");
+  valueCell.textContent = value;
+
+  row.append(labelCell, valueCell);
+  return row;
+}
+
+
 const params = new URLSearchParams(window.location.search);
 const ID = params.get('id'); // "Test" oder null
 addDetailContent(ID);
