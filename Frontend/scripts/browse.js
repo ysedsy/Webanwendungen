@@ -13,8 +13,9 @@ async function addResultBoxes(keyword) {
     console.error(
       `Der gewünschte Vogel ${keyword} konnte nicht gefunden werden!`,
     );
-    let ErrorMessage = `<div><b>Unter dem Suchwort "${keyword}" konnten leider keine Vögel gefunden werden</b></div>`;
-    browseFrame.innerHTML = ErrorMessage;
+    browseFrame.replaceChildren(buildMessageBox(
+      `Unter dem Suchwort "${keyword}" konnten leider keine Vögel gefunden werden`,
+    ));
     birdCountElement.textContent = "0 Vögel insgesamt gefunden";
     return;
   }
@@ -24,17 +25,16 @@ async function addResultBoxes(keyword) {
   const birdList = JSON.parse(resultBody);
   const listLength = birdList.length;
 
-  // In diesem HTML-String werden die Container aufgebaut:
-  let resultsHTML = "";
+  // In dieser Liste werden die Container als DOM-Nodes aufgebaut:
+  const resultNodes = [];
 
   // Iteriert durch alle JSON Container in der Liste
-  for (i = 0; i < birdList.length; i++) {
+  for (let i = 0; i < birdList.length; i++) {
     // console.log(birdList[i]);
-    resultsHTML += makeResultBox(birdList[i]);
-    // console.log(resultsHTML);
+    resultNodes.push(makeResultBox(birdList[i]));
   }
   // Ergebnis in die Container einfügen
-  browseFrame.innerHTML = resultsHTML;
+  browseFrame.replaceChildren(...resultNodes);
   birdCountElement.textContent = `Unter dem Suchwort "${keyword}" wurde/n ${listLength} Vögel gefunden`;
 }
 
@@ -47,24 +47,49 @@ function makeResultBox(data) {
   const birdWeight = data.Weight;
   const birdImage = data.ImagePath;
 
-  // HTML Container mit Daten zusammenfügen
-  let htmlSnippte = `
-        <div class="bird_preview" id="${birdID}">
-            <img src="${birdImage}">
-            <h1><a href="detailDynamic.html?id=${birdID}">${birdCommonName}</a></h1>
-            <table>
-                <tr>
-                    <td>Größe</td>
-                    <td>${birdHeight} cm</td>
-                </tr>
-                <tr>
-                    <td>Gewicht</td>
-                    <td>${birdWeight} g</td>
-                </tr>
-            </table>
-        </div>
-    `;
-  return htmlSnippte;
+  const birdPreview = document.createElement("div");
+  birdPreview.className = "bird_preview";
+  birdPreview.id = String(birdID);
+
+  const image = document.createElement("img");
+  image.src = birdImage;
+  image.alt = birdCommonName ? `Bild von ${birdCommonName}` : "Bild eines Vogels";
+
+  const title = document.createElement("h1");
+  const link = document.createElement("a");
+  link.href = `detailDynamic.html?id=${encodeURIComponent(String(birdID))}`;
+  link.textContent = birdCommonName;
+  title.appendChild(link);
+
+  const table = document.createElement("table");
+  table.append(
+    buildInfoRow("Größe", `${birdHeight} cm`),
+    buildInfoRow("Gewicht", `${birdWeight} g`),
+  );
+
+  birdPreview.append(image, title, table);
+  return birdPreview;
+}
+
+function buildInfoRow(label, value) {
+  const row = document.createElement("tr");
+
+  const labelCell = document.createElement("td");
+  labelCell.textContent = label;
+
+  const valueCell = document.createElement("td");
+  valueCell.textContent = value;
+
+  row.append(labelCell, valueCell);
+  return row;
+}
+
+function buildMessageBox(message) {
+  const container = document.createElement("div");
+  const strong = document.createElement("b");
+  strong.textContent = message;
+  container.appendChild(strong);
+  return container;
 }
 
 const params = new URLSearchParams(window.location.search);

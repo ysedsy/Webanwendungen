@@ -9,7 +9,7 @@ async function fillThreadContainer(id) {
   if (result.status != 200) {
     let ErrorMessage = `Es konnte kein Thread mit der ID ${id} gefunden werden!`;
     console.error(ErrorMessage);
-    threadCard.innerHTML = ErrorMessage;
+    threadCard.textContent = ErrorMessage;
     return;
   }
 
@@ -17,28 +17,33 @@ async function fillThreadContainer(id) {
   const resultBody = await result.text();
   const threadJSON = JSON.parse(resultBody);
   const postList = Array.isArray(threadJSON.posts) ? threadJSON.posts : [];
-  const flatPosts = collectPosts(postList);
 
   // Werte den Header aus JSON parsen
   const ThreadTitle = threadJSON.ThreadTitle;
   const firstDate = postList.length > 0 ? formatToDateOnly(postList[0].DateCreated) : "-";
   const lastDate = postList.length > 0 ? formatToDateOnly(postList[postList.length - 1].DateCreated) : "-";
 
-  // HTML für header zusammenfügen:
-  let threadCardHTML = `
-        <header class="thread-card-header">
-        <h2 class="thread-title">${ThreadTitle}</h2>
-            <span class="thread-meta"
-                >${firstDate} bis ${lastDate}</span
-            >
-        </header>
-        `;
+  const threadNodes = [];
+
+  const header = document.createElement("header");
+  header.className = "thread-card-header";
+
+  const title = document.createElement("h2");
+  title.className = "thread-title";
+  title.textContent = ThreadTitle;
+
+  const meta = document.createElement("span");
+  meta.className = "thread-meta";
+  meta.textContent = `${firstDate} bis ${lastDate}`;
+
+  header.append(title, meta);
+  threadNodes.push(header);
 
   for (let i = 0; i < postList.length; i++) {
-    threadCardHTML += createPostContainer(postList[i]);
+    threadNodes.push(createPostContainer(postList[i]));
   }
 
-  threadCard.innerHTML = threadCardHTML;
+  threadCard.replaceChildren(...threadNodes);
   return;
 }
 
@@ -48,34 +53,46 @@ function createPostContainer(data) {
     ? `forum_create_post.html?id=${id}&parentID=${data.PostID}`
     : `forum_create_post.html?parentID=${data.PostID}`;
 
-  let htmlSnippet = `
-        <div class="reply-tree" aria-label="Antwortbaum">
-            <article class="reply-item">
-            <header class="post-header">
-                <span>${data.UserName}</span>
-                <span>${formatToDateTime(data.DateCreated)}</span>
-            </header>
-            <div class="post-body">${data.PostText}</div>
-            <a
-                class="reply-button"
-        href="${replyLink}"
-                >Antworten</a
-            >
-            </article>
-    `;
+  const replyTree = document.createElement("div");
+  replyTree.className = "reply-tree";
+  replyTree.setAttribute("aria-label", "Antwortbaum");
+
+  const article = document.createElement("article");
+  article.className = "reply-item";
+
+  const postHeader = document.createElement("header");
+  postHeader.className = "post-header";
+
+  const userName = document.createElement("span");
+  userName.textContent = data.UserName;
+
+  const dateCreated = document.createElement("span");
+  dateCreated.textContent = formatToDateTime(data.DateCreated);
+
+  const postBody = document.createElement("div");
+  postBody.className = "post-body";
+  postBody.textContent = data.PostText;
+
+  const replyButton = document.createElement("a");
+  replyButton.className = "reply-button";
+  replyButton.href = replyLink;
+  replyButton.textContent = "Antworten";
+
+  postHeader.append(userName, dateCreated);
+  article.append(postHeader, postBody, replyButton);
+  replyTree.appendChild(article);
 
   // wenn Kinder, dann untergeordneten Postcontainer erstellen 
   if (children.length > 0) {
-    htmlSnippet += `<div class="reply-children">`;
+    const replyChildren = document.createElement("div");
+    replyChildren.className = "reply-children";
     for (let i = 0; i < children.length; i++) {
-      htmlSnippet += createPostContainer(children[i]);
+      replyChildren.appendChild(createPostContainer(children[i]));
     }
-    htmlSnippet += `</div>`;
+    replyTree.appendChild(replyChildren);
   }
 
-  htmlSnippet += `</div>`;
-
-  return htmlSnippet;
+  return replyTree;
 }
 
 // rekursive anordnung --> flache Licte

@@ -64,14 +64,14 @@ async function fillCreatePostPage() {
     const threadID = params.get("id");
 
     if (!threadID) {
-        threadCard.innerHTML = "Kein Thread ausgewählt.";
+        threadCard.textContent = "Kein Thread ausgewählt.";
         return;
     }
 
     const result = await fetch(`/api/threads/${threadID}`, { method: "GET" });
 
     if (!result.ok) {
-        threadCard.innerHTML = `Es konnte kein Thread mit der ID ${threadID} gefunden werden!`;
+        threadCard.textContent = `Es konnte kein Thread mit der ID ${threadID} gefunden werden!`;
         return;
     }
 
