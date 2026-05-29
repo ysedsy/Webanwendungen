@@ -142,4 +142,4 @@ vite.config.ts.timestamp-*
 .vscode/settings.json
 postman/globals/workspace.globals.yaml
 .postman/resources.yaml
-Backend/birdlexicon.db
+#Backend/birdlexicon.db
