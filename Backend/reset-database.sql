@@ -1,4 +1,5 @@
 PRAGMA foreign_keys = OFF;
+-- BEGIN TRANSACTION;
 -- funktioniert im Query Tool von DB Browser for SQLite
 
 -- Tabellen leeren
@@ -93,5 +94,5 @@ INSERT INTO "ForumPost" ("PostID", "UserName", "PostText", "DateCreated", "Threa
 INSERT INTO "ForumPost" ("PostID", "UserName", "PostText", "DateCreated", "ThreadID", "ParentID") VALUES (41, 'TurmiTim', 'Das wäre für mich ein Lifer!', '2026-05-13 15:49:31', 15, 40);
 INSERT INTO "ForumPost" ("PostID", "UserName", "PostText", "DateCreated", "ThreadID", "ParentID") VALUES (42, 'JonathanBlaumerle', 'Den hatte ich auch schon gesehen, schöner Vogel.', '2026-05-13 15:51:38', 15, 38);
 
-COMMIT;
+-- COMMIT;
 PRAGMA foreign_keys = ON;
