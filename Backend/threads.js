@@ -5,6 +5,7 @@ const path = require("path");
 const router = express.Router();
 const db = new Database(path.join(__dirname, "birdlexicon.db"));
 
+// --- Read All Threads ---
 router.get("/", (req,res)=>{ // "/api/threads"
     //MAX(ForumPost.DateCreated) holt das letzte Post‑Datum je Thread
     //LEFT JOIN stellt sicher, dass Threads ohne Posts trotzdem kommen (dann ist LastPostDate null)
@@ -23,6 +24,7 @@ router.get("/", (req,res)=>{ // "/api/threads"
     res.json(threads);
 });
 
+// --- Read One Thread ---
 router.get("/:id", (req,res) => { // "/api/threads/:id"
     const thread = db.prepare(`
     SELECT
@@ -73,6 +75,7 @@ router.get("/:id", (req,res) => { // "/api/threads/:id"
     });
 });
 
+// --- create Thread ---
 router.post("/", (req, res) => { // "/api/threads"
     const { threadTitle, userName, postText } = req.body;
 
@@ -107,6 +110,60 @@ router.post("/", (req, res) => { // "/api/threads"
     });
 });
 
+
+// --- Update Thread ---
+router.put("/:id", (req, res) => { // "/api/threads/:id"
+    const { threadTitle } = req.body;
+    
+    // 1. Pruefe ob Thread existiert
+    const thread = db.prepare(`
+        SELECT ThreadID FROM ForumThread WHERE ThreadID = ?
+    `).get(req.params.id);
+    
+    if (!thread) {
+        return res.status(404).json({ error: "Thread not found" });
+    }
+    
+    // 2. Update nur den Titel
+    db.prepare(`
+        UPDATE ForumThread
+        SET ThreadTitle = ?
+        WHERE ThreadID = ?
+    `).run(threadTitle, req.params.id);
+    
+    res.json({ message: "Thread updated" });
+});
+
+// ------ Delete Thread ------
+// WICHTIG!: zuerst alle Posts loeschen, dann den Thread! Sonst gibt es einen Foreign Key Constraint Error
+router.delete("/:id", (req, res) => { // "/api/threads/:id"
+    // 1. Pruefe ob Thread existiert
+    const thread = db.prepare(`
+        SELECT ThreadID FROM ForumThread WHERE ThreadID = ?
+    `).get(req.params.id);
+    
+    if (!thread) {
+        return res.status(404).json({ error: "Thread not found" });
+    }
+    
+    // 2. WICHTIG: Erst alle Posts des Threads loeschen (wegen Foreign Key!)
+    db.prepare(`
+        DELETE FROM ForumPost WHERE ThreadID = ?
+    `).run(req.params.id);
+    
+    // 3. Dann den Thread selbst loeschen
+    db.prepare(`
+        DELETE FROM ForumThread WHERE ThreadID = ?
+    `).run(req.params.id);
+    
+    res.json({ message: "Thread and all its posts deleted" });
+});
+
+
+
+
+
+// --- Create Post ---
 router.post("/:id/posts", (req, res) => { // "/api/threads/:id/posts"
     const { userName, postText, parentID } = req.body;
 
@@ -138,5 +195,48 @@ router.post("/:id/posts", (req, res) => { // "/api/threads/:id/posts"
     });
 });
 
+// --- UPDATE POST ---
+router.put("/:id/posts/:postId", (req, res) => { // "/api/threads/:id/posts/:postId"
+    const { postText } = req.body;
+    
+    // 1. Pruefe ob Post existiert UND zum Thread gehoert
+    const post = db.prepare(`
+        SELECT PostID FROM ForumPost 
+        WHERE PostID = ? AND ThreadID = ?
+    `).get(req.params.postId, req.params.id);
+    
+    if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+    }
+    
+    // 2. Update den PostText
+    db.prepare(`
+        UPDATE ForumPost
+        SET PostText = ?
+        WHERE PostID = ?
+    `).run(postText, req.params.postId);
+    
+    res.json({ message: "Post updated" });
+});
+
+// --- DELETE POST ---
+router.delete("/:id/posts/:postId", (req, res) => { // "/api/threads/:id/posts/:postId"
+    // 1. Pruefe ob Post existiert UND zum Thread gehoert
+    const post = db.prepare(`
+        SELECT PostID FROM ForumPost 
+        WHERE PostID = ? AND ThreadID = ?
+    `).get(req.params.postId, req.params.id);
+    
+    if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+    }
+    
+    // 2. Delete den Post
+    db.prepare(`
+        DELETE FROM ForumPost WHERE PostID = ?
+    `).run(req.params.postId);
+    
+    res.json({ message: "Post deleted" });
+});
 
 module.exports = router;
