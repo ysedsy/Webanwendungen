@@ -139,4 +139,18 @@ router.put("/:id", (req, res) => {
     res.json({ message: "Bird updated" });
 });
 
+// ------ DELETE ------
+router.delete("/:id", (req, res) => {
+    // 1. Pruefen ob existiert
+    const bird = db.prepare(`SELECT BirdID FROM Bird WHERE BirdID = ?`).get(req.params.id);
+    if (!bird) {
+        return res.status(404).json({ error: "Bird not found" });
+    }
+    
+    // 2. DELETE
+    db.prepare(`DELETE FROM Bird WHERE BirdID = ?`).run(req.params.id);
+    
+    res.json({ message: "Bird deleted" });
+});
+
 module.exports = router;
