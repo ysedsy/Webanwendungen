@@ -9,6 +9,7 @@ const fs = require("fs");
 const birdsRouter = require("./birds");
 const habitatRouter = require("./habitat");
 const threadRouter = require("./threads");
+const birdImagesRouter = require("./birdimages");
 
 const app = express();
 const port = 3000;
@@ -30,6 +31,7 @@ app.get("/api", (req,res) => {
 app.use("/api/birds",birdsRouter)
 app.use("/api/habitats",habitatRouter)
 app.use("/api/threads",threadRouter)
+app.use("/api/birdimages",birdImagesRouter)
 
 
 if (require.main === module) {
