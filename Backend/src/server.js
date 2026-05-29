@@ -6,23 +6,24 @@ const YAML = require("js-yaml");
 const fs = require("fs");
 
 // Router importieren
-const birdsRouter = require("./birds");
-const habitatRouter = require("./habitat");
-const threadRouter = require("./threads");
-const birdImagesRouter = require("./birdimages");
+const birdsRouter = require("./routes/birds");
+const habitatRouter = require("./routes/habitat");
+const threadRouter = require("./routes/threads");
+const birdImagesRouter = require("./routes/birdimages");
 
 const app = express();
 const port = 3000;
 
 app.use(express.json())
-app.use(express.static(path.join(__dirname, "../Frontend")))
-app.use("/images", express.static(path.join(__dirname, "images")))
-app.use("/logos", express.static(path.join(__dirname, "logos")))
+app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "../../Frontend")))
+app.use("/images", express.static(path.join(__dirname, "public/images")))
+app.use("/logos", express.static(path.join(__dirname, "public/logos")))
 
-const db = new Database(path.join(__dirname, "birdlexicon.db"));
+const db = new Database(path.join(__dirname, "database/birdlexicon.db"));
 
 // Load and setup Swagger documentation
-const swaggerDocument = YAML.load(fs.readFileSync(path.join(__dirname, "openapi.yaml"), "utf8"));
+const swaggerDocument = YAML.load(fs.readFileSync(path.join(__dirname, "docs/openapi.yaml"), "utf8"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/api", (req,res) => {

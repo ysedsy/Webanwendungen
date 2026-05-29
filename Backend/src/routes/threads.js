@@ -3,7 +3,7 @@ const Database = require("better-sqlite3");
 const path = require("path");
 
 const router = express.Router();
-const db = new Database(path.join(__dirname, "birdlexicon.db"));
+const db = new Database(path.join(__dirname, "../database/birdlexicon.db"));
 
 // --- Read All Threads ---
 router.get("/", (req,res)=>{ // "/api/threads"
