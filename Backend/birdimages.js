@@ -17,7 +17,7 @@ router.get("/", (req,res) => {
 // ------ READ ONE ------
 router.get("/:id", (req,res) => {
     // Image aus DB holen und in images packen
-    const image = db.prepare(`SELECT ImageID, BirdID, ImagePath, IsMainImagex
+    const image = db.prepare(`SELECT ImageID, BirdID, ImagePath, IsMainImage
          FROM BirdImage WHERE ImageID = ?`).get(req.params.id);
 
     // falls image Objekt leer ist -> Fehler, Bild existiert nicht
