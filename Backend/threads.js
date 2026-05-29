@@ -135,6 +135,7 @@ router.put("/:id", (req, res) => { // "/api/threads/:id"
 });
 
 // ------ Delete Thread ------
+// WICHTIG!: zuerst alle Posts loeschen, dann den Thread! Sonst gibt es einen Foreign Key Constraint Error
 router.delete("/:id", (req, res) => { // "/api/threads/:id"
     // 1. Pruefe ob Thread existiert
     const thread = db.prepare(`
