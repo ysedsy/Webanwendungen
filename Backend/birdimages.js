@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
     const { birdID, imagePath, isMainImage } = req.body;
 
     // 2. Pruefen ob die erforderlichen Felder 'birdID' und 'ImagePath' da sind
-    if (!birdID || !imagePath || !isMainImage) {
+    if (birdID == null || imagePath == null || isMainImage == null) {
         return res.status(400).json({error: "some required Attributes are missing"});
     }
 
