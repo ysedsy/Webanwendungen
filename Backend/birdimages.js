@@ -56,7 +56,7 @@ router.put("/:id", (req, res) => {
     // 1. Daten aus Body extrahieren
     const {imagePath, isMainImage} = req.body
 
-    // 2. Pruefen, ob Eintrag exisitiert
+    // 2. Pruefen, ob Eintrag existiert
     const image = db.prepare(`SELECT ImageID FROM BirdImage WHERE ImageID = ?`).get(req.params.id);
     if(!image){ // falls image nicht existiert -> Error
         return res.status(404).json({error: "Image not found"});
