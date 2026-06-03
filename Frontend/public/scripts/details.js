@@ -2,7 +2,7 @@
 async function addDetailContent(id){
     const detailMainFrame = document.querySelector(".bird-detail-page");
 
-    const api = `/api/birds/${id}`
+    const api = `http://localhost:3000/api/birds/${id}`
 
     const result = await fetch(api, {"method": "GET"});
 

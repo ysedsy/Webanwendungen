@@ -4,7 +4,7 @@ async function addResultBoxes(keyword) {
   const birdCountElement = document.getElementById("bird-count");
 
   // Auswahl der richtigen API
-  const api = keyword == "" ? "/api/birds" : `/api/birds/search/${keyword}`;
+  const api = keyword == "" ? "http://localhost:3000/api/birds" : `http://localhost:3000/api/birds/search/${keyword}`;
 
   const result = await fetch(api, { method: "GET" });
 

@@ -22,6 +22,11 @@ app.use("/logos", express.static(path.join(__dirname, "public/logos")))
 
 const db = new Database(path.join(__dirname, "database/birdlexicon.db"));
 
+// CORS HEADER wegen Trennung Frontend / Backend Seerver!
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:4000' }));
+
+
 // Load and setup Swagger documentation
 const swaggerDocument = YAML.load(fs.readFileSync(path.join(__dirname, "docs/openapi.yaml"), "utf8"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -35,6 +40,7 @@ app.use("/api/birds",birdsRouter)
 app.use("/api/habitats",habitatRouter)
 app.use("/api/threads",threadRouter)
 app.use("/api/birdimages",birdImagesRouter)
+
 
 
 if (require.main === module) {

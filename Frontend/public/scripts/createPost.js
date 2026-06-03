@@ -25,7 +25,7 @@ async function createPost(event) {
         return;
     }
 
-    const result = await fetch(`/api/threads/${threadID}/posts`, {
+    const result = await fetch(`http://localhost:3000/api/threads/${threadID}/posts`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -68,7 +68,7 @@ async function fillCreatePostPage() {
         return;
     }
 
-    const result = await fetch(`/api/threads/${threadID}`, { method: "GET" });
+    const result = await fetch(`http://localhost:3000/api/threads/${threadID}`, { method: "GET" });
 
     if (!result.ok) {
         threadCard.textContent = `Es konnte kein Thread mit der ID ${threadID} gefunden werden!`;

@@ -2,7 +2,7 @@
 async function fillFeed(){
     const FeedContainer = document.getElementById("thread-list");
 
-    const api = "/api/threads"
+    const api = "http://localhost:3000/api/threads"
 
     const result = await fetch(api, {"method": "GET"});
 

@@ -3,7 +3,7 @@ async function fillThreadContainer(id) {
   const threadCard = document.querySelector(".thread-card");
 
   // fetch Befehl zusammensetzen:
-  const api = `/api/threads/${id}`;
+  const api = `http://localhost:3000/api/threads/${id}`;
   const result = await fetch(api, { method: "GET" });
 
   if (result.status != 200) {

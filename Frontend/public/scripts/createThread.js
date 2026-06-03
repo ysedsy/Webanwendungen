@@ -24,7 +24,7 @@ async function createThread(){
         return
     }
 
-    const api = "/api/threads"
+    const api = "http://localhost:3000/api/threads"
 
     const jsonData = {
                 "threadTitle" :titleVal, 
