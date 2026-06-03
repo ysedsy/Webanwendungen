@@ -1,9 +1,51 @@
 const express = require("express");
 const Database = require("better-sqlite3");
 const path = require("path");
+const fs = require("fs");
 
 const router = express.Router();
 const db = new Database(path.join(__dirname, "../database/birdlexicon.db"));
+
+function resolveImagePath(imagePathFromDb) {
+    const imagesBaseDir = path.join(__dirname, "../public/images");
+
+    if (!imagePathFromDb || typeof imagePathFromDb !== "string") {
+        return null;
+    }
+
+    let relativePath = imagePathFromDb.replace(/\\/g, "/").replace(/^\/+/, "");
+    if (relativePath.startsWith("images/")) {
+        relativePath = relativePath.slice("images/".length);
+    }
+
+    const fullPath = path.resolve(imagesBaseDir, relativePath);
+    if (!fullPath.startsWith(path.resolve(imagesBaseDir))) {
+        return null;
+    }
+
+    return fullPath;
+}
+
+// ------ READ MAIN IMAGE FILE BY BIRD ------
+router.get("/bird/:birdId/main/file", (req, res) => {
+    const image = db.prepare(`
+        SELECT ImagePath
+        FROM BirdImage
+        WHERE BirdID = ? AND IsMainImage = 1
+        LIMIT 1
+    `).get(req.params.birdId);
+
+    if (!image) {
+        return res.status(404).json({ error: "Main image not found" });
+    }
+
+    const fullPath = resolveImagePath(image.ImagePath);
+    if (!fullPath || !fs.existsSync(fullPath)) {
+        return res.status(404).json({ error: "Image file not found" });
+    }
+
+    res.sendFile(fullPath);
+});
 
 // ------ READ ALL ------
 router.get("/", (req,res) => {

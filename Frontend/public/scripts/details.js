@@ -29,7 +29,7 @@ async function addDetailContent(id){
 
     // Bild
     const image = document.createElement("img");
-    image.src = birdDetails.ImagePath;
+    image.src = `http://localhost:3000/api/birdimages/bird/${id}/main/file`;
     image.className = "bird-detail-image"
     image.alt = `Bild von ${birdDetails.CommonName}`;
     ContainerDiv.appendChild(image);

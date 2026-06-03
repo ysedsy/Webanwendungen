@@ -45,14 +45,13 @@ function makeResultBox(data) {
   const birdScientificName = data.ScientificName;
   const birdHeight = data.Height;
   const birdWeight = data.Weight;
-  const birdImage = data.ImagePath;
 
   const birdPreview = document.createElement("div");
   birdPreview.className = "bird_preview";
   birdPreview.id = String(birdID);
 
   const image = document.createElement("img");
-  image.src = birdImage;
+  image.src = `http://localhost:3000/api/birdimages/bird/${birdID}/main/file`;
   image.alt = birdCommonName ? `Bild von ${birdCommonName}` : "Bild eines Vogels";
 
   const title = document.createElement("h1");
